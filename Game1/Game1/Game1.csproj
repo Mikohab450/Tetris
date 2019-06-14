@@ -51,7 +51,8 @@
     <Compile Include="BlocksControl.cs" />
     <Compile Include="BlockO.cs" />
     <Compile Include="BlockT.cs" />
-    <Compile Include="BlockType.cs" />
+    <Compile Include="Board.cs" />
+    <Compile Include="Figure.cs" />
     <Compile Include="BlockZ.cs" />
     <Compile Include="GameLogic.cs" />
     <Compile Include="MainGame.cs" />

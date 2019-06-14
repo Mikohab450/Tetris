@@ -8,7 +8,7 @@ namespace Game1
 {
     class BlockFactory
     {
-        private BlockType newBlock;
+        private Figure newBlock;
 
 
         public BlockFactory()
@@ -21,7 +21,7 @@ namespace Game1
 
         }
 
-        public BlockType GetBlock()
+        public Figure GetBlock()
         {
             return newBlock;
         }

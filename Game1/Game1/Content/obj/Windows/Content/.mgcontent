@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Profile>Reach</Profile>
+  <Platform>Windows</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Users/Mikolaj/Documents/tetris/projektTetris/Game1/Game1/Content/Bck.png</File>
+    <File>C:/Users/Mikolaj/Documents/tetris/projektTetris/Game1/Game1/Content/blocks.png</File>
+    <File>C:/Users/Mikolaj/Documents/tetris/projektTetris/Game1/Game1/Content/Button01.png</File>
+    <File>C:/Users/Mikolaj/Documents/tetris/projektTetris/Game1/Game1/Content/Button06.png</File>
+    <File>C:/Users/Mikolaj/Documents/tetris/projektTetris/Game1/Game1/Content/Button13.png</File>
+    <File>C:/Users/Mikolaj/Documents/tetris/projektTetris/Game1/Game1/Content/Button16.png</File>
+    <File>C:/Users/Mikolaj/Documents/tetris/projektTetris/Game1/Game1/Content/Score.spritefont</File>
+  </SourceFiles>
+  <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File>ButtonRed.png</File>
+    <File>ButtonGreen.png</File>
+    <File>ButtonPurple.png</File>
+    <File>ButtonGrey.png</File>
+    <File xsi:nil="true" />
+  </DestFiles>
+</SourceFileCollection>

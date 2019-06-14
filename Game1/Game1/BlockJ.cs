@@ -7,25 +7,100 @@ using Microsoft.Xna.Framework;
 
 namespace Game1
 {
-    class BlockJ : BlockType
+    class BlockJ : Figure
     {
-        public BlockJ(int x, int y, Color color)
+        public BlockJ()//int x, int y, Color color)
         {
-            block1.posx = x;
-            block1.posy = y;
-            block1.color = color;
+            blockArray[0, 2] = true;
+            blockArray[1, 2] = true;
+            blockArray[2, 2] = true;
+            blockArray[2, 1] = true;
+            //Block1.posx = x;
+            //Block1.posy = y;
+            //Block1.color = color;
 
-            block2.posx = x - 1;
-            block2.posy = y;
-            block2.color = color;
+            //Block2.posx = x - 1;
+            //Block2.posy = y;
+            //Block2.color = color;
 
-            block3.posx = x + 1;
-            block3.posy = y;
-            block3.color = color;
+            //Block3.posx = x + 1;
+            //Block3.posy = y;
+            //Block3.color = color;
 
-            block4.posx = x - 1;
-            block4.posy = y - 1;
-            block4.color = color;
+            //Block4.posx = x - 1;
+            //Block4.posy = y - 1;
+            //Block4.color = color;
+        }
+        public override Figure RightRotation()
+        {
+            BlockJRotated90ToRight RotatedFigure = new BlockJRotated90ToRight();
+            return RotatedFigure;
+        }
+        public override Figure LeftRotation()
+        {
+            BlockJRotated270ToRight RotatedFigure = new BlockJRotated270ToRight();
+            return RotatedFigure;     
+        }
+    }
+    class BlockJRotated90ToRight : BlockJ
+    {
+        public BlockJRotated90ToRight()
+        {
+            blockArray[1, 1] = true;
+            blockArray[2, 2] = true;
+            blockArray[2, 3] = true;
+            blockArray[2, 1] = true;
+        }
+        public override Figure RightRotation()
+        {
+            BlockJRotated180ToRight RotatedFigure = new BlockJRotated180ToRight();
+            return RotatedFigure;
+        }
+        public override Figure LeftRotation()
+        {
+            BlockJ RotatedFigure = new BlockJ();
+            return RotatedFigure;
+        }
+    }
+
+    class BlockJRotated180ToRight : BlockJ
+    {
+        public BlockJRotated180ToRight()
+        {
+            blockArray[3, 1] = true;
+            blockArray[2, 1] = true;
+            blockArray[1, 1] = true;
+            blockArray[1, 2] = true;
+        }
+        public override Figure RightRotation()
+        {
+            return base.LeftRotation();         //right roatation for 180 degree is the same as left rotation for the 0 degree
+        }
+        public override Figure LeftRotation()
+        {
+            return base.RightRotation();         //left roatation for 180 degree is the same as right rotation for the 0 degree
+        }
+    }
+
+    class BlockJRotated270ToRight : BlockJ
+    {
+        public BlockJRotated270ToRight()
+        {
+            blockArray[1, 0] = true;
+            blockArray[1, 1] = true;
+            blockArray[1, 2] = true;
+            blockArray[2, 2] = true;
+        }
+        public override Figure RightRotation()
+        {
+            BlockJ RotatedFigure = new BlockJ();
+            return RotatedFigure;
+        }
+        public override Figure LeftRotation()
+        {
+            BlockJRotated180ToRight RotatedFigure = new BlockJRotated180ToRight();
+            return RotatedFigure;
         }
     }
 }
+

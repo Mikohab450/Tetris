@@ -21,7 +21,7 @@ namespace Game1
 
         private List<SingleBlock> Bloki = new List<SingleBlock>();
 
-        protected internal void addToList(SingleBlock newBlock)
+        protected internal void AddToList(SingleBlock newBlock)
         {
             Bloki.Add(newBlock);
         }
@@ -30,14 +30,16 @@ namespace Game1
         {
             foreach (SingleBlock bloczek in this.Bloki)
             {
-                bloczek.posx -= (int)(40);
+                bloczek.position.X--;
+                //Posx -= (int)(40);
             }
         }
         protected internal void goRight()
         {
             foreach (SingleBlock bloczek in this.Bloki)
             {
-                bloczek.posx += (int)(40);
+                bloczek.position.X++;
+              //;= (int)(40);
             }
         }
 
@@ -45,7 +47,7 @@ namespace Game1
         {
             foreach (SingleBlock bloczek in this.Bloki)
             {
-                bloczek.posy += (int)(40);
+                bloczek.AddTo_X_Posistion((int)(40));
             }
         }
         protected internal void LoadContent(GraphicsDevice device, SpriteBatch spriteBatch, Microsoft.Xna.Framework.Content.ContentManager Content)
@@ -75,7 +77,7 @@ namespace Game1
             DrawRectangle(new Rectangle((int)shiftX, (int)shiftY, 39, 39), Color.IndianRed);
             foreach (SingleBlock block in Bloki)
             {
-                DrawRectangle(new Rectangle(block.posx, block.posy, 39, 39), block.color);
+                DrawRectangle(new Rectangle((block.position.X*40), (block.position.Y*40), 39, 39), block.Color);
             }
             spriteBatch.End();
         }
