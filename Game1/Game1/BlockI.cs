@@ -9,31 +9,23 @@ namespace Game1
 {
     class BlockI : Figure
     {
-        public BlockI()//int x, int y, Color color)
-        {
-            blockArray[0, 1] = true;
-            blockArray[1, 1] = true;
-            blockArray[2, 1] = true;
-            blockArray[3, 1] = true;
-            //Block1.posx = x;
-            //Block1.posy = y;
-            //Block1.color = color;
-
-            //Block2.posx = x + 1;
-            //Block2.posy = y;
-            //Block2.color = color;
-
-            //Block3.posx = x + 2;
-            //Block3.posy = y;
-            //Block3.color = color;
-
-            //Block4.posx = x - 1;
-            //Block4.posy = y;
-            //Block4.color = color;
+        public BlockI(Board board_):base(board_)
+        {         
+            //blocks=SetBlocks
         }
+        public override SingleBlock[] SetBlocks(Board board)
+        {
+            SingleBlock[] blocks = new SingleBlock[4];
+            for (int i = 0; i < 4; i++)
+            { 
+                blocks[i] = new SingleBlock(board, new Point(i, 0) );
+            }
+            return blocks;
+        }
+ 
         public override Figure RightRotation()
         {
-            BlockIRotated RotatedFigure= new BlockIRotated();
+            BlockIRotated RotatedFigure= new BlockIRotated(board);
             return RotatedFigure;
         }
         public override Figure LeftRotation()
@@ -43,16 +35,24 @@ namespace Game1
     }
     class BlockIRotated : BlockI
     { 
-        public BlockIRotated()
+        public BlockIRotated(Board board_):base(board_)
         {
+
             blockArray[1, 0] = true;
             blockArray[1, 1] = true;
             blockArray[1, 2] = true;
             blockArray[1, 3] = true;
         }
+        private static SingleBlock[] Check(Board b)
+        {
+            SingleBlock[] blocks = new SingleBlock[4];
+            for (int i = 0; i < 4; i++)
+                blocks[i] = new SingleBlock(b, new Point(i, 0));
+            return blocks;
+        }
         public override Figure RightRotation()
         {
-            BlockI RotatedFigure = new BlockI();
+            BlockI RotatedFigure = new BlockI(board);
             return RotatedFigure;
         }
         public override Figure LeftRotation()

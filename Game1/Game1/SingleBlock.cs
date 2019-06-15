@@ -34,16 +34,17 @@ namespace Game1
             else throw new IndexOutOfRangeException("Cannot change the y coordinate!");
         }
         /// <summary>
-        /// Constructor a single block
+        /// Constructor of a single block
         /// </summary>
-        /// <param name="_color">Color of the block</param>
+        /// <param name="_board_">The board that the block will be created in</param>
         /// <param name="p">Coordinates of the block</param>
-        public SingleBlock(Color _color,Point p)
+        public SingleBlock(Board board_,Point p)
         {
-            if (board.CheckCoords(p))
+            if (board_.CheckCoords(p))
                 position = p;
             else throw new IndexOutOfRangeException("Given coordinates are incorrect!");
-            Color = _color;
+            board = board_;
+            //Color = _color;
         }
         /// <summary>
         /// Checks if single block can be moved to the left
@@ -58,12 +59,38 @@ namespace Game1
         /// <summary>
         /// Checks if single block can be moved to the right
         /// </summary>
-        /// <returns>True if the nlock can be moved, false otherwise</returns>
+        /// <returns>True if the block can be moved, false otherwise</returns>
         public bool CanMoveRight()
         {
             if (position.X + 1 < 0 || board[position.X + 1, position.Y])
                 return false;
             return true;
+        }        
+        /// <summary>
+        /// Checks if single block can be moved down
+        /// </summary>
+        /// <returns>True if the block can be moved, false otherwise</returns>
+        public bool CanMoveDown()
+        {
+            if (board[position.X, position.Y+1] || position.Y+1<0)
+                return false;
+            return true;
+        }
+        /// <summary>
+        ///Moves the block to the left 
+        /// </summary>
+        public void MoveLeft()
+        {
+            position.X--;
+
+        }
+        /// <summary>
+        ///Moves the block to the right
+        /// </summary>
+        public void MoveRight()
+        {
+            position.X++;
+
         }
         //public int Posx { get; set; }
         //public int Posy { get; set; }

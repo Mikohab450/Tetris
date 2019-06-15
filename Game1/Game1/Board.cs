@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace Game1
 {
-    class Board
+     public class Board
     {
         const int width = 10;
         const int lenght = 22;
@@ -20,12 +20,25 @@ namespace Game1
                 for (int j = 0; j < 22; j++)
                     board[i, j] = false;
         }
+        public Board(bool p)
+        {
+            for (int i = 0; i < 10; i++)
+                for (int j = 0; j < 22; j++)
+                    board[i, j] = p;
+        }
+        /// <summary>
+        /// Indexer that allows to get the value from the board.
+        /// Indexes of cols and rows are counted from 0
+        /// </summary>
+        /// <param name="i">Number of the row</param>
+        /// <param name="j">Number of the column</param>
+        /// <returns></returns>
         public bool this[int i, int j]
         {
             get
             {
                 if (CheckCoords(i, j))
-                    return board[j, i];
+                    return board[i, j];
                 else
                     throw new IndexOutOfRangeException("Given coordinates are incorrect!");
             }
