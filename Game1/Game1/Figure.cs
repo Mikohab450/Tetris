@@ -9,21 +9,17 @@ namespace Game1
 {
     abstract class Figure
     {
+        Color color=new Color(0);
         protected Board board;
         private Point position; 
-        public bool[,] blockArray = new bool[4, 4]
-        {
-            {false,false,false,false },
-            {false,false,false,false },
-            {false,false,false,false },
-            {false,false,false,false }
-        };
         public Figure() { }
         private SingleBlock[] blocks;
         public Figure(Board board_)
         {
            board = board_;
            blocks =SetBlocks(board);
+            position.X = 0;
+            position.Y = 0;
         }
         /// <summary>
         /// If it is possible, moves the figure to the left
@@ -83,10 +79,13 @@ namespace Game1
         /// Chcks if the figure can be rotated
         /// </summary>
         /// <returns></returns>
-        public bool CanBeRotated() {
-            Figure next_pos ;
+        public bool CanBeRotatedTo(Figure next) {
+            for(int i=0;i<4;i++)
+                if (!board[blocks[i].position])
+                    return false;
             return true;
         }
+
         /// <summary>
         /// Checks if a figure can be moved to the left
         /// </summary>

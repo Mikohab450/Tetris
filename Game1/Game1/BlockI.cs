@@ -38,7 +38,7 @@ namespace Game1
         public BlockIRotated(Board board_):base(board_)
         { 
         }
-        private static SingleBlock[] Check(Board board_)
+        public override SingleBlock[] SetBlocks(Board board_)
         {
             SingleBlock[] blocks = new SingleBlock[4];
             for (int i = 0; i < 4; i++)

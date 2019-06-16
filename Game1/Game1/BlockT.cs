@@ -9,27 +9,17 @@ namespace Game1
 {
     class BlockT : Figure
     {
-        public BlockT(Board board)//int x, int y, Color color)
+        public BlockT(Board board):base(board)
+        { 
+        }
+        public override SingleBlock[] SetBlocks(Board board_)
         {
-            blockArray[1, 0] = true;
-            blockArray[0, 1] = true;
-            blockArray[1, 2] = true;
-            blockArray[1, 1] = true;
-            //Block1.posx = x;
-            //Block1.posy = y;
-            //Block1.color = color;
-
-            //Block2.posx = x - 1;
-            //Block2.posy = y + 1;
-            //Block2.color = color;
-
-            //Block3.posx = x;
-            //Block3.posy = y + 1;
-            //Block3.color = color;
-
-            //Block4.posx = x + 1;
-            //Block4.posy = y + 1;
-            //Block4.color = color;
+            SingleBlock[] blocks = new SingleBlock[4];
+            blocks[0] = new SingleBlock(board_, new Point(1, 0));
+            blocks[1] = new SingleBlock(board_, new Point(1, 1));
+            blocks[2] = new SingleBlock(board_, new Point(1, 2));
+            blocks[3] = new SingleBlock(board_, new Point(2, 1));
+            return blocks;
         }
         public override Figure RightRotation()
         {
@@ -46,10 +36,15 @@ namespace Game1
     {
         public BlockTRotated90ToRight(Board board):base(board)
         {
-            blockArray[0, 1] = true;
-            blockArray[1, 1] = true;
-            blockArray[1, 2] = true;
-            blockArray[2, 1] = true;
+        }
+        public override SingleBlock[] SetBlocks(Board board_)
+        {
+            SingleBlock[] blocks = new SingleBlock[4];
+            blocks[0] = new SingleBlock(board_, new Point(0, 1));
+            blocks[1] = new SingleBlock(board_, new Point(1, 1));
+            blocks[2] = new SingleBlock(board_, new Point(1, 0));
+            blocks[3] = new SingleBlock(board_, new Point(2, 1));
+            return blocks;
         }
         public override Figure RightRotation()
         {
@@ -66,10 +61,15 @@ namespace Game1
     { 
         public BlockTRotated180ToRight(Board board):base(board)
         {
-            blockArray[1, 0] = true;
-            blockArray[1, 1] = true;
-            blockArray[1, 2] = true;
-            blockArray[2, 1] = true;
+        }
+        public override SingleBlock[] SetBlocks(Board board_)
+        {
+            SingleBlock[] blocks = new SingleBlock[4];
+            blocks[0] = new SingleBlock(board_, new Point(2, 0));
+            blocks[1] = new SingleBlock(board_, new Point(2, 1));
+            blocks[2] = new SingleBlock(board_, new Point(2, 2));
+            blocks[3] = new SingleBlock(board_, new Point(1, 1));
+            return blocks;
         }
         public override Figure RightRotation()
         {
@@ -84,10 +84,15 @@ namespace Game1
     {
         public BlockTRotated270ToRight(Board board):base(board)
         {
-            blockArray[0, 1] = true;
-            blockArray[1, 1] = true;
-            blockArray[2, 1] = true;
-            blockArray[1, 0] = true;
+        }
+        public override SingleBlock[] SetBlocks(Board board_)
+        {
+            SingleBlock[] blocks = new SingleBlock[4];
+            blocks[0] = new SingleBlock(board_, new Point(0, 1));
+            blocks[1] = new SingleBlock(board_, new Point(1, 1));
+            blocks[2] = new SingleBlock(board_, new Point(1, 2));
+            blocks[3] = new SingleBlock(board_, new Point(2, 1));
+            return blocks;
         }
         public override Figure RightRotation()
         {

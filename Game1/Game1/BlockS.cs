@@ -9,27 +9,17 @@ namespace Game1
 {
     class BlockS : Figure
     {
-        public BlockS(Board board)//int x, int y, Color color)
+        public BlockS(Board board):base(board)
         {
-            //blockArray[1, 1] = true;
-            //blockArray[0, 1] = true;
-            //blockArray[1, 2] = true;
-            //blockArray[2, 2] = true;
-            //Block1.posx = x;
-            //Block1.posy = y;
-            //Block1.color = color;
-
-            //Block2.posx = x + 1;
-            //Block2.posy = y;
-            //Block2.color = color;
-
-            //Block3.posx = x;
-            //Block3.posy = y + 1;
-            //Block3.color = color;
-
-            //Block4.posx = x - 1;
-            //Block4.posy = y + 1;
-            //Block4.color = color;
+        }
+        public override SingleBlock[] SetBlocks(Board board_)
+        {
+            SingleBlock[] blocks = new SingleBlock[4];
+            blocks[0] = new SingleBlock(board_, new Point(2, 0));
+            blocks[1] = new SingleBlock(board_, new Point(2, 1));
+            blocks[2] = new SingleBlock(board_, new Point(1, 1));
+            blocks[3] = new SingleBlock(board_, new Point(1, 2));
+            return blocks;
         }
         public override Figure RightRotation()
         {
@@ -45,10 +35,15 @@ namespace Game1
     {
         public BlockSRotated90ToRight(Board board):base(board)
         {
-            blockArray[0, 2] = true;
-            blockArray[0, 3] = true;
-            blockArray[1, 0] = true;
-            blockArray[1, 1] = true;
+        }
+        public override SingleBlock[] SetBlocks(Board board_)
+        {
+            SingleBlock[] blocks = new SingleBlock[4];
+            blocks[0] = new SingleBlock(board_, new Point(0, 0));
+            blocks[1] = new SingleBlock(board_, new Point(1, 0));
+            blocks[2] = new SingleBlock(board_, new Point(1, 1));
+            blocks[3] = new SingleBlock(board_, new Point(2, 1));
+            return blocks;
         }
         public override Figure RightRotation()
         {

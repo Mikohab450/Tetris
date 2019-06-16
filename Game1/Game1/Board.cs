@@ -31,13 +31,28 @@ namespace Game1
         /// </summary>
         /// <param name="i">Number of the row</param>
         /// <param name="j">Number of the column</param>
-        /// <returns></returns>
+        /// <returns>The value of pointed cell the board</returns>
         public bool this[int i, int j]
         {
             get
             {
                 if (CheckCoords(i, j))
                     return board[i, j];
+                else
+                    throw new IndexOutOfRangeException("Given coordinates are incorrect!");
+            }
+        }
+        /// <summary>
+        /// Indexer that allows to get the value from the board.
+        /// </summary>
+        /// <param name="p">The point on the board</param>
+        /// <returns>The value of pointed cell the board</returns>
+        public bool this[Point p]
+        {
+            get
+            {
+                if (CheckCoords(p))
+                    return board[p.X, p.Y];
                 else
                     throw new IndexOutOfRangeException("Given coordinates are incorrect!");
             }
@@ -64,6 +79,10 @@ namespace Game1
             if (p.X < 0 || p.Y < 0 || p.X >= width || p.Y >= lenght)
                 return false;
             return true;
+        }
+        public void CheckLines()
+        {
+            //for(int i=0;i<22;i++)
         }
     }
 }
