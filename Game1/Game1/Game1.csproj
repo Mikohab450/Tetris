@@ -43,7 +43,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="BlockFactory.cs" />
+    <Compile Include="FigureFactory.cs" />
     <Compile Include="BlockJ.cs" />
     <Compile Include="BlockL.cs" />
     <Compile Include="BlockI.cs" />

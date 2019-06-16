@@ -9,7 +9,7 @@ namespace Game1
 {
     class BlockJ : Figure
     {
-        public BlockJ()//int x, int y, Color color)
+        public BlockJ(Board board)//int x, int y, Color color)
         {
             blockArray[0, 2] = true;
             blockArray[1, 2] = true;
@@ -33,18 +33,18 @@ namespace Game1
         }
         public override Figure RightRotation()
         {
-            BlockJRotated90ToRight RotatedFigure = new BlockJRotated90ToRight();
+            BlockJRotated90ToRight RotatedFigure = new BlockJRotated90ToRight(board);
             return RotatedFigure;
         }
         public override Figure LeftRotation()
         {
-            BlockJRotated270ToRight RotatedFigure = new BlockJRotated270ToRight();
+            BlockJRotated270ToRight RotatedFigure = new BlockJRotated270ToRight(board);
             return RotatedFigure;     
         }
     }
     class BlockJRotated90ToRight : BlockJ
     {
-        public BlockJRotated90ToRight()
+        public BlockJRotated90ToRight(Board board_):base(board_)
         {
             blockArray[1, 1] = true;
             blockArray[2, 2] = true;
@@ -53,19 +53,19 @@ namespace Game1
         }
         public override Figure RightRotation()
         {
-            BlockJRotated180ToRight RotatedFigure = new BlockJRotated180ToRight();
+            BlockJRotated180ToRight RotatedFigure = new BlockJRotated180ToRight(board);
             return RotatedFigure;
         }
         public override Figure LeftRotation()
         {
-            BlockJ RotatedFigure = new BlockJ();
+            BlockJ RotatedFigure = new BlockJ(board);
             return RotatedFigure;
         }
     }
 
     class BlockJRotated180ToRight : BlockJ
     {
-        public BlockJRotated180ToRight()
+        public BlockJRotated180ToRight(Board board_):base(board_)
         {
             blockArray[3, 1] = true;
             blockArray[2, 1] = true;
@@ -84,7 +84,7 @@ namespace Game1
 
     class BlockJRotated270ToRight : BlockJ
     {
-        public BlockJRotated270ToRight()
+        public BlockJRotated270ToRight(Board board_):base(board_)
         {
             blockArray[1, 0] = true;
             blockArray[1, 1] = true;
@@ -93,12 +93,12 @@ namespace Game1
         }
         public override Figure RightRotation()
         {
-            BlockJ RotatedFigure = new BlockJ();
+            BlockJ RotatedFigure = new BlockJ(board);
             return RotatedFigure;
         }
         public override Figure LeftRotation()
         {
-            BlockJRotated180ToRight RotatedFigure = new BlockJRotated180ToRight();
+            BlockJRotated180ToRight RotatedFigure = new BlockJRotated180ToRight(board);
             return RotatedFigure;
         }
     }

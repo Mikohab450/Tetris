@@ -10,7 +10,7 @@ namespace Game1
     abstract class Figure
     {
         protected Board board;
- 
+        private Point position; 
         public bool[,] blockArray = new bool[4, 4]
         {
             {false,false,false,false },
@@ -28,23 +28,39 @@ namespace Game1
         /// <summary>
         /// If it is possible, moves the figure to the left
         /// </summary>
-        public virtual void MoveLeft()
+        public void MoveLeft()
         {
             if (CanMoveLeft())
+            {
                 for (int i = 0; i < 4; i++)
                     blocks[i].MoveLeft();
+                position.X++;
+            }
         }
         /// <summary>
         /// If it is possible, moves the figure to the right
         /// </summary>
-        public virtual void MoveRight()
+        public void MoveRight()
         {
-            if (CanMoveLeft())
+            if (CanMoveRight())
+            {
                 for (int i = 0; i < 4; i++)
                     blocks[i].MoveRight();
+                position.X--;
+            }
         }
-   
-      
+        public void MoveDown()
+        {
+            if (CanMoveDown())
+            {
+                for (int i = 0; i < 4; i++)
+                    blocks[i].MoveDown();
+                position.Y++;
+            }
+        }
+
+
+
         /// <summary>
         /// Obraca figure o 90 stopni w prawo
         /// </summary>
@@ -85,7 +101,7 @@ namespace Game1
         /// <summary>
         /// Checks if a figure can be moved to the right
         /// </summary>
-        /// <returns>True if a figurecan be moved, false otherwise</returns>
+        /// <returns>True if a figure can be moved, false otherwise</returns>
         public bool CanMoveRight()
         {
             for(int i = 0; i < 4; i++)
@@ -93,6 +109,16 @@ namespace Game1
                     return false;
             return true;
         }
-
+        /// <summary>
+        /// Checks if a figure can be moved down
+        /// </summary>
+        /// <returns>True if a figure can be moved, false otherwise</returns>
+        public bool CanMoveDown()
+        {
+            for (int i = 0; i < 4; i++)
+                if (!blocks[i].CanMoveDown())
+                    return false;
+            return true;
+        }
     }
 }

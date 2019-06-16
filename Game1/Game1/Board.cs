@@ -12,20 +12,19 @@ namespace Game1
         const int width = 10;
         const int lenght = 22;
         bool[,] board = new bool[width, lenght];
+        FigureFactory create;
         Figure current;
         Figure next_figure;
         public Board()
         {
+            create=new FigureFactory(this);
             for (int i = 0; i < 10; i++)
                 for (int j = 0; j < 22; j++)
                     board[i, j] = false;
+            current = create.GetFigure();
+            next_figure = create.GetFigure();
         }
-        public Board(bool p)
-        {
-            for (int i = 0; i < 10; i++)
-                for (int j = 0; j < 22; j++)
-                    board[i, j] = p;
-        }
+
         /// <summary>
         /// Indexer that allows to get the value from the board.
         /// Indexes of cols and rows are counted from 0

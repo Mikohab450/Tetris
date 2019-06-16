@@ -92,8 +92,13 @@ namespace Game1
             position.X++;
 
         }
-        //public int Posx { get; set; }
-        //public int Posy { get; set; }
+
+        public void MoveDown()
+        {
+            if (CanMoveDown())
+                position.Y++;
+            else { }
+        }
         public Color Color { get; set; }
     }
 }

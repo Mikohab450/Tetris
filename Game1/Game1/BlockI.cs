@@ -18,7 +18,7 @@ namespace Game1
             SingleBlock[] blocks = new SingleBlock[4];
             for (int i = 0; i < 4; i++)
             { 
-                blocks[i] = new SingleBlock(board, new Point(i, 0) );
+                blocks[i] = new SingleBlock(board, new Point(i, 2) );
             }
             return blocks;
         }
@@ -36,18 +36,13 @@ namespace Game1
     class BlockIRotated : BlockI
     { 
         public BlockIRotated(Board board_):base(board_)
-        {
-
-            blockArray[1, 0] = true;
-            blockArray[1, 1] = true;
-            blockArray[1, 2] = true;
-            blockArray[1, 3] = true;
+        { 
         }
-        private static SingleBlock[] Check(Board b)
+        private static SingleBlock[] Check(Board board_)
         {
             SingleBlock[] blocks = new SingleBlock[4];
             for (int i = 0; i < 4; i++)
-                blocks[i] = new SingleBlock(b, new Point(i, 0));
+                blocks[i] = new SingleBlock(board_, new Point(1, i));
             return blocks;
         }
         public override Figure RightRotation()

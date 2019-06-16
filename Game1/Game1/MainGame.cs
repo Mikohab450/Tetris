@@ -30,6 +30,8 @@ namespace Game1
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            //Creating a board is gituwa as well
+            //Board bbb = new Board();
             //Creating a block is gituwa
             //BlockI nowy =new BlockI(new Board());
         }

@@ -9,26 +9,16 @@ namespace Game1
 {
     class BlockO : Figure
     {
-        public BlockO()//int x, int y, Color color)
+        public BlockO(Board board_):base(board_)
+        {}
+        private static SingleBlock[] Check(Board board_)
         {
-            blockArray[1, 1] = true;
-            blockArray[1, 2] = true;
-            blockArray[2, 1] = true;
-            blockArray[2, 2] = true;
-            //block1.posx = x;
-            //block1.posy = y;
-            //block1.color = color;
-            //Block2.posx = x+1;
-            //Block2.posy = y;
-            //Block2.color = color;
-
-            //Block3.posx = x;
-            //Block3.posy = y+1;
-            //Block3.color = color;
-
-            //Block4.posx = x+1;
-            //Block4.posy = y+1;
-            //Block4.color = color;
+            SingleBlock[] blocks = new SingleBlock[4];
+            blocks[0] = new SingleBlock(board_, new Point(1, 1));
+            blocks[1] = new SingleBlock(board_, new Point(1, 2));
+            blocks[2] = new SingleBlock(board_, new Point(1, 1));
+            blocks[3] = new SingleBlock(board_, new Point(2, 2));
+            return blocks;
         }
         /// <summary>
         /// Rotation of this block doesn't change anything

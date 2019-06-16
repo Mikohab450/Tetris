@@ -9,7 +9,7 @@ namespace Game1
 {
     class BlockS : Figure
     {
-        public BlockS()//int x, int y, Color color)
+        public BlockS(Board board)//int x, int y, Color color)
         {
             //blockArray[1, 1] = true;
             //blockArray[0, 1] = true;
@@ -33,7 +33,7 @@ namespace Game1
         }
         public override Figure RightRotation()
         {
-            BlockSRotated90ToRight RotatedFigure = new BlockSRotated90ToRight();
+            BlockSRotated90ToRight RotatedFigure = new BlockSRotated90ToRight(board);
             return RotatedFigure;
         }
         public override Figure LeftRotation()
@@ -43,7 +43,7 @@ namespace Game1
     }
     class BlockSRotated90ToRight : BlockS
     {
-        public BlockSRotated90ToRight()
+        public BlockSRotated90ToRight(Board board):base(board)
         {
             blockArray[0, 2] = true;
             blockArray[0, 3] = true;
@@ -52,7 +52,7 @@ namespace Game1
         }
         public override Figure RightRotation()
         {
-            BlockS RotatedFigure = new BlockS();
+            BlockS RotatedFigure = new BlockS(board);
             return RotatedFigure;
         }
         public override Figure LeftRotation()
