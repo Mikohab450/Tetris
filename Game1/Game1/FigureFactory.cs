@@ -28,19 +28,25 @@ namespace Game1
             set[6] = new BlockT(board);
 
         }
-
+        /// <summary>
+        /// Genrates list of a random permutation of 7-element set of figures
+        /// </summary>
         private void GenerateSequenceOfFigures()
         {
             for(int i=0; i<7; i++)
             {
                 int random_index = rnd.Next(0, 6-i);
                 Figury.Add(set[random_index]);
+                Figury[i].SetColor();
                 Figure temp = set[random_index];
                 set[random_index] = set[6 - i];
                 set[6 - i] = temp;
 ;            }
         }
-
+        /// <summary>
+        /// Generates a randomly generated figure
+        /// </summary>
+        /// <returns>Randomly generated figure</returns>
         public Figure GetFigure()
         {
             if(!Figury.Any())

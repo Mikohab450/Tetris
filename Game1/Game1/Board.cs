@@ -7,24 +7,28 @@ using Microsoft.Xna.Framework;
 
 namespace Game1
 {
-     public class Board
+    class Board
     {
-        const int width = 10;
-        const int lenght = 22;
-        bool[,] board = new bool[width, lenght];
-        FigureFactory create;
-        Figure current;
-        Figure next_figure;
+        protected bool gameOver=false;
+        protected const int width = 10;
+        private const int lenght = 23;  //the first line serves as a buffer for new figures
+        private SingleBlock[,] board = new SingleBlock[lenght, width];
+        private FigureFactory create;
+        public Figure current_figure;
+        public Figure next_figure;
+        //constructor of a board
         public Board()
         {
-            create=new FigureFactory(this);
-            for (int i = 0; i < 10; i++)
-                for (int j = 0; j < 22; j++)
-                    board[i, j] = false;
-            current = create.GetFigure();
+            create = new FigureFactory(this);
+            for (int i = 0; i < width; i++)
+                for (int j = 0; j < lenght; j++)
+                    board[j, i] = null;
+            current_figure = create.GetFigure();
             next_figure = create.GetFigure();
         }
-
+        public void EndTheGame() { gameOver = true; }
+        public int GetWidth() { return width; }
+        public int GetLenght() { return lenght; }
         /// <summary>
         /// Indexer that allows to get the value from the board.
         /// Indexes of cols and rows are counted from 0
@@ -32,7 +36,7 @@ namespace Game1
         /// <param name="i">Number of the row</param>
         /// <param name="j">Number of the column</param>
         /// <returns>The value of pointed cell the board</returns>
-        public bool this[int i, int j]
+        public SingleBlock this[int i, int j]
         {
             get
             {
@@ -47,7 +51,7 @@ namespace Game1
         /// </summary>
         /// <param name="p">The point on the board</param>
         /// <returns>The value of pointed cell the board</returns>
-        public bool this[Point p]
+        public SingleBlock this[Point p]
         {
             get
             {
@@ -60,12 +64,12 @@ namespace Game1
         /// <summary>
         /// Checks if given coordinates are correct
         /// </summary>
-        /// <param name="x">The x coordinate</param>
-        /// <param name="y">The y coordinate</param>
+        /// <param name="y">The x coordinate</param>
+        /// <param name="x">The y coordinate</param>
         /// <returns>True if the coordinates are correct, false otherwise</returns>
         public bool CheckCoords(int x, int y)
         {
-            if (x < 0 || y < 0 || x >= width || y >= lenght)
+            if (y < 0 || x < 0 || y >= width || x >= lenght)
                 return false;
             return true;
         }
@@ -76,13 +80,69 @@ namespace Game1
         /// <returns>True if the coordinates are correct, false otherwise</returns>
         public bool CheckCoords(Point p)
         {
-            if (p.X < 0 || p.Y < 0 || p.X >= width || p.Y >= lenght)
+            if (p.Y < 0 || p.X < 0 || p.Y >= width || p.X >= lenght)
                 return false;
             return true;
         }
-        public void CheckLines()
+        /// <summary>
+        /// Checks if any lines are full, and if there are any, clears them
+        /// </summary>
+        /// <returns>The number of full lines</returns>
+        public int CheckLines()
         {
-            //for(int i=0;i<22;i++)
+            bool line_found = true;
+            int lines=0;
+            int current_x;
+            for (int i = 0; i < 4; i++)
+            {
+                current_x = current_figure[i].position.X;
+                for (int j = 0; j < width && line_found; j++)
+                {
+                    if (board[current_x, j] == null)
+                        line_found = false;
+                }
+                if (line_found)
+                {
+                    ClearLine(current_x);
+                    lines++;
+                }
+                else
+                    line_found = true;
+               
+            }
+            return lines;
         }
+        public void ClearLine(int line) {
+            for (int i = line; i >0; i--)
+            {
+                for (int j = 0; j < width; j++)
+                    board[i, j] = board[i -1, j];
+            }
+        }
+        public void AddToPile()
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                SingleBlock blockToAdd = current_figure[i];
+                board[blockToAdd.position.X, blockToAdd.position.Y] = new SingleBlock(this, blockToAdd.position);
+            }
+        }
+        /// <summary>
+        /// If the game is over, it raises the gameOverFlag
+        /// if it isn't, it creates the next figures
+        /// </summary>
+        public void CheckGameOver()
+        {
+            for (int i = 0; i < 4; i++)
+                if (current_figure[i].position.X > lenght - 1)
+                    EndTheGame();
+            if (!gameOver)
+            {
+                current_figure = next_figure;
+                next_figure = create.GetFigure();
+            }
+        }
+       
     }
+   
 }

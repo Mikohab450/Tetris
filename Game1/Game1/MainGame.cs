@@ -31,7 +31,17 @@ namespace Game1
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             //Creating a board is gituwa as well
-            //Board bbb = new Board();
+            //Board b = new Board();
+            //b.current_figure = new BlockIRotated(b);
+            //b.current_figure.Drop();
+            //b.current_figure = new BlockIRotated(b);
+            //for(int i=0;i<4; i++) b.current_figure.MoveRight();
+            //b.current_figure.Drop();
+            //b.current_figure = new BlockO(b);
+            //for (int i = 0; i < 8; i++) b.current_figure.MoveRight();
+            //b.current_figure.MoveRight();
+
+            //b.current_figure.Drop();
             //Creating a block is gituwa
             //BlockI nowy =new BlockI(new Board());
         }

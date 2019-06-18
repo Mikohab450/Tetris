@@ -16,7 +16,7 @@ namespace Game1
             SingleBlock[] blocks = new SingleBlock[4];
             blocks[0] = new SingleBlock(board_, new Point(1, 1));
             blocks[1] = new SingleBlock(board_, new Point(1, 2));
-            blocks[2] = new SingleBlock(board_, new Point(1, 1));
+            blocks[2] = new SingleBlock(board_, new Point(2, 1));
             blocks[3] = new SingleBlock(board_, new Point(2, 2));
             return blocks;
         }

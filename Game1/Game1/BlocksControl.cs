@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Game1
 {
-    public class BlocksControl : Game
+    class BlocksControl : Game
     {
         private static Texture2D rect;
         public GraphicsDevice device;
@@ -38,7 +38,7 @@ namespace Game1
         {
             foreach (SingleBlock bloczek in this.Bloki)
             {
-                bloczek.position.X++;
+               // bloczek.position.X++;
               //;= (int)(40);
             }
         }
@@ -47,7 +47,7 @@ namespace Game1
         {
             foreach (SingleBlock bloczek in this.Bloki)
             {
-                bloczek.AddTo_X_Posistion((int)(40));
+               // bloczek.AddTo_X_Posistion((int)(40));
             }
         }
         protected internal void LoadContent(GraphicsDevice device, SpriteBatch spriteBatch, Microsoft.Xna.Framework.Content.ContentManager Content)

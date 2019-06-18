@@ -7,32 +7,12 @@ using Microsoft.Xna.Framework;
 
 namespace Game1
 {
-    public class SingleBlock : Game
+    class SingleBlock
     {
         
         private Board board;
         public Point position;
-        //this might be unnecessary//
-        /// <summary>
-        /// Adds given value to the parameter x of the position
-        /// </summary>
-        /// <param name="value">Value, that will be added to the x coordiante</param>
-        public void AddTo_X_Posistion(int value)
-        {
-            if (board.CheckCoords(value, 0))
-                position.X += value;
-            else throw new IndexOutOfRangeException("Cannot change the x coordinate!");
-        }
-        /// <summary>
-        /// Adds given value to the parameter y of the position
-        /// </summary>
-        /// <param name="value">Value, that will be added to the y coordiante</param>
-        public void AddTo_Y_Posistion(int value)
-        {
-            if (board.CheckCoords(0, value))
-                position.Y += value;
-            else throw new IndexOutOfRangeException("Cannot change the y coordinate!");
-        }
+
         /// <summary>
         /// Constructor of a single block
         /// </summary>
@@ -44,7 +24,6 @@ namespace Game1
                 position = p;
             else throw new IndexOutOfRangeException("Given coordinates are incorrect!");
             board = board_;
-            //Color = _color;
         }
         /// <summary>
         /// Checks if single block can be moved to the left
@@ -52,7 +31,7 @@ namespace Game1
         /// <returns>True if the block can be moved, false otherwise</returns>
         public bool CanMoveLeft()
         {
-            if (position.X-1 < 0 || board[position.X-1, position.Y])
+            if (position.Y-1 < 0 || board[position.X-1, position.Y]!=null)
                 return false;
             return true;
         }
@@ -62,7 +41,7 @@ namespace Game1
         /// <returns>True if the block can be moved, false otherwise</returns>
         public bool CanMoveRight()
         {
-            if (position.X + 1 < 0 || board[position.X + 1, position.Y])
+            if (position.Y + 1 >= board.GetWidth() || board[position.X + 1, position.Y] != null)
                 return false;
             return true;
         }        
@@ -72,7 +51,7 @@ namespace Game1
         /// <returns>True if the block can be moved, false otherwise</returns>
         public bool CanMoveDown()
         {
-            if (board[position.X, position.Y+1] || position.Y+1<0)
+            if (position.X + 1 >= board.GetLenght() || board[position.X+1, position.Y] != null )
                 return false;
             return true;
         }
@@ -81,7 +60,7 @@ namespace Game1
         /// </summary>
         public void MoveLeft()
         {
-            position.X--;
+            position.Y--;
 
         }
         /// <summary>
@@ -89,16 +68,17 @@ namespace Game1
         /// </summary>
         public void MoveRight()
         {
-            position.X++;
+            position.Y++;
 
         }
 
         public void MoveDown()
         {
-            if (CanMoveDown())
-                position.Y++;
-            else { }
+                position.X++;
         }
-        public Color Color { get; set; }
+        public Color Color {
+            get;
+            set;
+        }
     }
 }
