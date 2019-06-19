@@ -20,9 +20,9 @@ namespace Game1
         /// <param name="p">Coordinates of the block</param>
         public SingleBlock(Board board_,Point p)
         {
-            if (board_.CheckCoords(p))
+            //if (board_.CheckCoords(p))
                 position = p;
-            else throw new IndexOutOfRangeException("Given coordinates are incorrect!");
+           // else throw new IndexOutOfRangeException("Given coordinates are incorrect!");
             board = board_;
         }
         /// <summary>
