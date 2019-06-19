@@ -25,6 +25,7 @@ namespace Game1
         private GameScene gameScene;
         private MenuScene menuScene;
         private GameOverScene gameOverScene;
+        private Board _board;
 
         public MainGame()
         {
@@ -58,12 +59,14 @@ namespace Game1
             graphics.PreferredBackBufferWidth = 600;
             graphics.PreferredBackBufferHeight = 900;
             graphics.ApplyChanges();
-            
-           
+            block.LoadContent(GraphicsDevice, spriteBatch, Content);
+
+
 
             base.Initialize();
+            _board = new Board();
             menuScene = new MenuScene(this);
-            gameScene = new GameScene(this);
+            gameScene = new GameScene(this, _board);
             gameOverScene = new GameOverScene(this);
             IsMouseVisible = true;
               //  Window.AllowUserResizing = true;
@@ -79,7 +82,7 @@ namespace Game1
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            block.LoadContent(GraphicsDevice, spriteBatch, Content);
+            
 
             // TODO: use this.Content to load your game content here
         }
