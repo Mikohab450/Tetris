@@ -48,7 +48,10 @@ namespace Game1
                 current_figure = current_figure.RightRotation();
         }
         public Figure GetFigure() { return current_figure; }
-        public void EndTheGame() { gameOver = true; }
+
+        public void EndTheGame()
+        {
+            MenuState.IsShowGameOverScene = true; }
         public int GetWidth() { return width; }
         public int GetLenght() { return lenght; }
         /// <summary>
@@ -133,7 +136,7 @@ namespace Game1
                     line_found = true;
 
             }
-            s.AddScore(lines);
+            s.addScore(lines);
             return lines;
         }
         public void ClearLine(int line)
@@ -162,7 +165,7 @@ namespace Game1
         public void CheckGameOver()
         {
             for (int i = 0; i < 4; i++)
-                if (current_figure[i].position.X > lenght - 1)
+                if (current_figure[i].position.X < 0)
                     EndTheGame();
             if (!gameOver)
             {
@@ -171,6 +174,10 @@ namespace Game1
             }
         }
 
+        public Score GetScore()
+        {
+            return s;
+        }
     }
 
 }

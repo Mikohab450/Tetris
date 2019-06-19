@@ -46,7 +46,7 @@ namespace Game1
             Timers(gameTime,board);
             if (state.IsKeyUp(Keys.Left) & !previousState.IsKeyUp(Keys.Left))
                 board.MoveFigureLeft();
-            MenuState.IsShowGameOverScene = true;
+          //  MenuState.IsShowGameOverScene = true;
             // board.current_figure.MoveLeft();
             if (state.IsKeyUp(Keys.Right) & !previousState.IsKeyUp(Keys.Right))
                 board.MoveFigureRight();
@@ -69,7 +69,7 @@ namespace Game1
                 if (timer <= TimeSpan.Zero)
                 {
                    // currentBlock.updateList();
-                    board.current_figure.MoveDown();
+                    board.MoveFigureDown();
                     timer = timer2;
                 }
 

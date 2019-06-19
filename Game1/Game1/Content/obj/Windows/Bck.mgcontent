@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/Users/Kacper/source/repos/projektTetris/Game1/Game1/Content/Bck.png</SourceFile>
-  <SourceTime>2019-06-19T11:50:04.202789+02:00</SourceTime>
+  <SourceTime>2019-06-19T23:09:18.1171163+02:00</SourceTime>
   <DestFile>C:/Users/Kacper/source/repos/projektTetris/Game1/Game1/Content/bin/Windows/Bck.xnb</DestFile>
-  <DestTime>2019-06-19T12:22:31.0325458+02:00</DestTime>
+  <DestTime>2019-06-19T23:15:11.1697381+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T17:35:54+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

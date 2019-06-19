@@ -69,8 +69,8 @@ namespace Game1
 
             spriteBatch.DrawString(font, "SCORE", new Vector2(scorePos - font.MeasureString("SCORE").X / 2, 520),
                 Color.White);
-            spriteBatch.DrawString(font, score.getScore().ToString(),
-                new Vector2(scorePos - font.MeasureString(score.getScore().ToString()).X / 2, 560), Color.White);
+            spriteBatch.DrawString(font, board.GetScore().getScore().ToString(),
+                new Vector2(scorePos - font.MeasureString(board.GetScore().getScore().ToString()).X / 2, 560), Color.White);
 
             for (int i = 0; i < 4; i++)
             {
