@@ -46,7 +46,7 @@ namespace Game1
 
         protected override void LoadContent()
         {
-            background = game.Content.Load<Texture2D>("Bck");
+            background = game.Content.Load<Texture2D>("Bck2");
             font = game.Content.Load<SpriteFont>("ScoreGame");
         }
 
@@ -54,7 +54,7 @@ namespace Game1
         {
             GraphicsDevice.Clear(Color.Black);
             spriteBatch.Begin();
-            spriteBatch.Draw(background, destinationRectangle: new Rectangle(0, 0, 600, 900));
+            spriteBatch.Draw(background, destinationRectangle: new Rectangle(0, 0, 600, 900), Color.Silver);
             for (float x = -cols; x < cols; x++)
             {
                 Rectangle rectangle = new Rectangle((int) (centerX + x * gridSize), shiftY, 1, height);
@@ -78,6 +78,8 @@ namespace Game1
                     new Rectangle((board.current_figure[i].position.Y * 40 + shiftX+1), (board.current_figure[i].position.X * 40 + shiftY),
                         39, 39), board.current_figure[i].Color);
             }
+
+          
 
             for (int i = 0; i < board.GetWidth(); i++)
             {

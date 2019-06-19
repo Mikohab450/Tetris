@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/Users/Kacper/source/repos/projektTetris/Game1/Game1/Content/GameOver.png</SourceFile>
-  <SourceTime>2019-06-19T12:27:40.2075622+02:00</SourceTime>
+  <SourceTime>2019-06-19T19:43:33.5918466+02:00</SourceTime>
   <DestFile>C:/Users/Kacper/source/repos/projektTetris/Game1/Game1/Content/bin/Windows/Content/GameOver.xnb</DestFile>
-  <DestTime>2019-06-19T12:28:02.9702095+02:00</DestTime>
+  <DestTime>2019-06-19T19:43:57.0228208+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T17:35:54+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

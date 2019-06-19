@@ -89,3 +89,7 @@ C:\Users\Kacper\source\repos\projektTetris\Game1\Game1\obj\x86\Debug\Game1.exe
 C:\Users\Kacper\source\repos\projektTetris\Game1\Game1\obj\x86\Debug\Game1.pdb
 C:\Users\Kacper\source\repos\projektTetris\Game1\Game1\bin\Windows\x86\Debug\Content\GameOver.xnb
 C:\Users\Kacper\source\repos\projektTetris\Game1\Game1\bin\Windows\x86\Debug\Content\ScoreGame.xnb
+C:\Users\Kacper\source\repos\projektTetris\Game1\Game1\bin\Windows\x86\Debug\Content\MenuBack.xnb
+C:\Users\Kacper\source\repos\projektTetris\Game1\Game1\bin\Windows\x86\Debug\Content\GameOverAgain.xnb
+C:\Users\Kacper\source\repos\projektTetris\Game1\Game1\bin\Windows\x86\Debug\Content\GameOverExit.xnb
+C:\Users\Kacper\source\repos\projektTetris\Game1\Game1\bin\Windows\x86\Debug\Content\Bck2.xnb

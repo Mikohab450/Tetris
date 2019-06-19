@@ -23,7 +23,7 @@ namespace Game1
         private TimeSpan timer3 = new TimeSpan(0, 0, 10);
 
         private GameScene gameScene;
-        private BlocksControl currentBlock;
+        
 
      
 
@@ -45,8 +45,8 @@ namespace Game1
 
             timers(gameTime,board);
             if (state.IsKeyUp(Keys.Left) & !previousState.IsKeyUp(Keys.Left))
-                //MenuState.IsShowGameOverScene = true;
-                board.current_figure.MoveLeft();
+                MenuState.IsShowGameOverScene = true;
+               // board.current_figure.MoveLeft();
             if (state.IsKeyUp(Keys.Right) & !previousState.IsKeyUp(Keys.Right))
                 board.current_figure.MoveRight();
             if (state.IsKeyUp(Keys.Space) & !previousState.IsKeyUp(Keys.Space))

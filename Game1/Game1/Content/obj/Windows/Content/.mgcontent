@@ -5,22 +5,30 @@
   <Config />
   <SourceFiles>
     <File>C:/Users/Kacper/source/repos/projektTetris/Game1/Game1/Content/Bck.png</File>
+    <File>C:/Users/Kacper/source/repos/projektTetris/Game1/Game1/Content/Bck2.jpg</File>
     <File>C:/Users/Kacper/source/repos/projektTetris/Game1/Game1/Content/blocks.png</File>
     <File>C:/Users/Kacper/source/repos/projektTetris/Game1/Game1/Content/Button01.png</File>
     <File>C:/Users/Kacper/source/repos/projektTetris/Game1/Game1/Content/Button06.png</File>
     <File>C:/Users/Kacper/source/repos/projektTetris/Game1/Game1/Content/Button13.png</File>
     <File>C:/Users/Kacper/source/repos/projektTetris/Game1/Game1/Content/Button16.png</File>
     <File>C:/Users/Kacper/source/repos/projektTetris/Game1/Game1/Content/GameOver.png</File>
+    <File>C:/Users/Kacper/source/repos/projektTetris/Game1/Game1/Content/GameOverAgain.png</File>
+    <File>C:/Users/Kacper/source/repos/projektTetris/Game1/Game1/Content/GameOverExit.png</File>
+    <File>C:/Users/Kacper/source/repos/projektTetris/Game1/Game1/Content/MenuBack.jpg</File>
     <File>C:/Users/Kacper/source/repos/projektTetris/Game1/Game1/Content/Score.spritefont</File>
     <File>C:/Users/Kacper/source/repos/projektTetris/Game1/Game1/Content/ScoreGame.spritefont</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />
     <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File>ButtonRed.png</File>
     <File>ButtonGreen.png</File>
     <File>ButtonPurple.png</File>
     <File>ButtonGrey.png</File>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

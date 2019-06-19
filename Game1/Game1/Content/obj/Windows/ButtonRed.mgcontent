@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/Users/Kacper/source/repos/projektTetris/Game1/Game1/Content/Button01.png</SourceFile>
-  <SourceTime>2019-06-19T11:50:04.203786+02:00</SourceTime>
+  <SourceTime>2019-06-19T13:02:14.9842644+02:00</SourceTime>
   <DestFile>C:/Users/Kacper/source/repos/projektTetris/Game1/Game1/Content/bin/Windows/ButtonRed.xnb</DestFile>
-  <DestTime>2019-06-19T12:22:31.0714676+02:00</DestTime>
+  <DestTime>2019-06-19T19:16:54.3737545+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T17:35:54+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

@@ -16,7 +16,8 @@ namespace Game1
         Texture2D PlayButtonTexture;
         Texture2D ExitButtonTexture;
         Texture2D LogoTexture;
-       
+        Texture2D background;
+
         Rectangle recPlayButton;
         Rectangle recExitButton;
         Rectangle recLogo;
@@ -35,6 +36,7 @@ namespace Game1
        
         protected override void LoadContent()
         {
+            background = game.Content.Load<Texture2D>("MenuBack");
             PlayButtonTexture = game.Content.Load<Texture2D>("ButtonGreen");
             ExitButtonTexture = game.Content.Load<Texture2D>("ButtonRed");
             LogoTexture = game.Content.Load<Texture2D>("blocks");
@@ -44,6 +46,7 @@ namespace Game1
         {
             GraphicsDevice.Clear(Color.BlanchedAlmond);
             spriteBatch.Begin();
+            spriteBatch.Draw(background, destinationRectangle: new Rectangle(0, 0, 600, 900), Color.Goldenrod);
             spriteBatch.Draw(LogoTexture, recLogo, Color.White);
             spriteBatch.Draw(PlayButtonTexture, recPlayButton, PlayButtonColor);
             spriteBatch.Draw(ExitButtonTexture, recExitButton, ExitButtonColor);

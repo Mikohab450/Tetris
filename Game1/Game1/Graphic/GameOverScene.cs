@@ -38,17 +38,20 @@ namespace Game1
         {
             background = game.Content.Load<Texture2D>("GameOver");
             font = game.Content.Load<SpriteFont>("Score");
-            PlayButtonTexture = game.Content.Load<Texture2D>("ButtonGreen");
-            ExitButtonTexture = game.Content.Load<Texture2D>("ButtonRed");
+            PlayButtonTexture = game.Content.Load<Texture2D>("GameOverAgain");
+            ExitButtonTexture = game.Content.Load<Texture2D>("GameOverExit");
         }
 
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
+            
             spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend);
             spriteBatch.Draw(background, destinationRectangle: new Rectangle(0, 0, 600, 900), Color.White*0.05f);
+            spriteBatch.Draw(PlayButtonTexture, destinationRectangle: new Rectangle(0, 0, 600, 900), PlayButtonColor);
+            spriteBatch.Draw(ExitButtonTexture, destinationRectangle: new Rectangle(0, 0, 600, 900), ExitButtonColor);
             spriteBatch.DrawString(font, score.getScore().ToString(), new Vector2(GraphicsDevice.Viewport.Width / 2 - font.MeasureString(score.getScore().ToString()).X /2, 360), new Color(176, 47, 31));
-            spriteBatch.Draw(PlayButtonTexture, recPlayButton, PlayButtonColor);
-            spriteBatch.Draw(ExitButtonTexture, recExitButton, ExitButtonColor);
+            
+
             spriteBatch.End();
         }
 
@@ -98,7 +101,7 @@ namespace Game1
         {
             if ((recPlayButton.Intersects(Cursor)))
             {
-                PlayButtonColor = Color.White;
+                PlayButtonColor = Color.Pink;
                 if (mouseState.LeftButton == ButtonState.Pressed)
                 {
                     PlayButtonColor = Color.Red;
@@ -110,7 +113,7 @@ namespace Game1
 
             if ((recExitButton.Intersects(Cursor)))
             {
-                ExitButtonColor = Color.Green;
+                ExitButtonColor = Color.Tomato;
                 if (mouseState.LeftButton == ButtonState.Pressed)
                 {
                     ExitButtonColor = Color.Red;

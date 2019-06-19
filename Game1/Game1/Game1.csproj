@@ -48,7 +48,6 @@
     <Compile Include="Logic\BlockL.cs" />
     <Compile Include="Logic\BlockI.cs" />
     <Compile Include="Logic\BlockS.cs" />
-    <Compile Include="Logic\BlocksControl.cs" />
     <Compile Include="Logic\BlockO.cs" />
     <Compile Include="Logic\BlockT.cs" />
     <Compile Include="Logic\Board.cs" />

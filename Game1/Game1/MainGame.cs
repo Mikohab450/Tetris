@@ -21,7 +21,7 @@ namespace Game1
     {
         GraphicsDeviceManager graphics;
         protected internal SpriteBatch spriteBatch;
-        BlocksControl block = new BlocksControl();
+        
         private GameScene gameScene;
         private MenuScene menuScene;
         private GameOverScene gameOverScene;
@@ -59,7 +59,7 @@ namespace Game1
             graphics.PreferredBackBufferWidth = 600;
             graphics.PreferredBackBufferHeight = 900;
             graphics.ApplyChanges();
-            block.LoadContent(GraphicsDevice, spriteBatch, Content);
+            
 
 
 

@@ -1,2 +1,2 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"C:/Users/Kacper/source/repos/projektTetris/Game1/Game1/Content/ScoreGame.spritefont","C:/Users/Kacper/source/repos/projektTetris/Game1/Game1/Content/bin/Windows/ScoreGame.xnb","FontDescriptionProcessor","SpriteFontContent",2062,70673,0,3171512
+"C:/Users/Kacper/source/repos/projektTetris/Game1/Game1/Content/Bck2.jpg","C:/Users/Kacper/source/repos/projektTetris/Game1/Game1/Content/bin/Windows/Bck2.xnb","TextureProcessor","Texture2DContent",50454,2160085,0,2124327
