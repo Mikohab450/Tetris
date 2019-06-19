@@ -43,26 +43,27 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="FigureFactory.cs" />
-    <Compile Include="BlockJ.cs" />
-    <Compile Include="BlockL.cs" />
-    <Compile Include="BlockI.cs" />
-    <Compile Include="BlockS.cs" />
-    <Compile Include="BlocksControl.cs" />
-    <Compile Include="BlockO.cs" />
-    <Compile Include="BlockT.cs" />
-    <Compile Include="Board.cs" />
-    <Compile Include="Figure.cs" />
-    <Compile Include="BlockZ.cs" />
-    <Compile Include="GameLogic.cs" />
+    <Compile Include="Logic\FigureFactory.cs" />
+    <Compile Include="Logic\BlockJ.cs" />
+    <Compile Include="Logic\BlockL.cs" />
+    <Compile Include="Logic\BlockI.cs" />
+    <Compile Include="Logic\BlockS.cs" />
+    <Compile Include="Logic\BlocksControl.cs" />
+    <Compile Include="Logic\BlockO.cs" />
+    <Compile Include="Logic\BlockT.cs" />
+    <Compile Include="Logic\Board.cs" />
+    <Compile Include="Logic\Figure.cs" />
+    <Compile Include="Logic\BlockZ.cs" />
+    <Compile Include="Logic\GameLogic.cs" />
     <Compile Include="MainGame.cs" />
-    <Compile Include="GameOverScene.cs" />
-    <Compile Include="GameScene.cs" />
-    <Compile Include="MenuScene.cs" />
-    <Compile Include="MenuState.cs" />
+    <Compile Include="Graphic\GameOverScene.cs" />
+    <Compile Include="Graphic\GameScene.cs" />
+    <Compile Include="Graphic\MenuScene.cs" />
+    <Compile Include="Graphic\MenuState.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SingleBlock.cs" />
+    <Compile Include="Logic\SingleBlock.cs" />
+    <Compile Include="Score.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
