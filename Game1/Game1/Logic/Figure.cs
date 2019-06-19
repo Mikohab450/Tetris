@@ -9,18 +9,38 @@ namespace Game1
 {
     abstract class Figure
     {
+        private Color color;
+        public Color Color
+        {
+            get { return color; }
+            set
+            {
+                color = value;
+                for (int i = 0; i < 4; i++)
+                    blocks[i].Color = color;
+            }
+        }
 
         protected Board board;
-        private Point position;
-        public Figure() { }
+        internal protected Point position;
+        //public Figure() { }
         private SingleBlock[] blocks;
         //constructor
         public Figure(Board board_)
         {
             board = board_;
-            blocks = SetBlocks(board);
             position.X = 0;
-            position.Y = 0;
+            position.Y = 3;
+            blocks = SetBlocks(board);
+            SetColor();
+        }
+        public Figure(Figure f)
+        {
+            this.board = f.board;
+            this.position = f.position;
+
+            blocks = SetBlocks(board);
+            this.Color = f.Color;
         }
         /// <summary>
         /// If it is possible, moves the figure to the left
@@ -57,7 +77,8 @@ namespace Game1
                 position.X++;
             }
         }
-        public void FigureDropeed(){
+        public void FigureDropeed()
+        {
             board.AddToPile();
             board.CheckLines();
             board.CheckGameOver();
@@ -78,8 +99,9 @@ namespace Game1
         /// </summary>
         public void SetColor()
         {
-            Random r=new Random();
+            Random r = new Random();
             Color c = new Color(r.Next(255), r.Next(255), r.Next(255));
+            color = c;
             for (int i = 0; i < 4; i++)
                 blocks[i].Color = c;
         }
@@ -93,19 +115,23 @@ namespace Game1
         /// Obraca figure o 90 stopni w prawo
         /// </summary>
         abstract public Figure LeftRotation();
-      
+
         public virtual SingleBlock[] SetBlocks(Board board_)
         {
-            return null;// new SingleBlock[4];
+            return null;//new SingleBlock[4];
         }
         /// <summary>
         /// Chcks if the figure can be rotated
         /// </summary>
         /// <returns></returns>
-        public bool CanBeRotatedTo(Figure next) {
-            for(int i=0;i<4;i++)
-                if (board[blocks[i].position]!=null)
+        public bool CanBeRotatedTo(Figure next)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                Point block_next_position = next[i].position;
+                if (!board.CheckCoords(block_next_position) || board[block_next_position] != null)
                     return false;
+            }
             return true;
         }
 
@@ -115,12 +141,13 @@ namespace Game1
         /// <returns>True if the fiure can be moved, false otherwise</returns>
         private bool CanMoveLeft()
         {
-            for(int i=0;i<4;i++)
-                if(!blocks[i].CanMoveLeft())
+            for (int i = 0; i < 4; i++)
+                if (!blocks[i].CanMoveLeft())
                     return false;
             return true;
         }
-        public void Drop() {
+        public void Drop()
+        {
             while (CanMoveDown())
                 MoveDown();
 
@@ -131,7 +158,7 @@ namespace Game1
         /// <returns>True if a figure can be moved, false otherwise</returns>
         private bool CanMoveRight()
         {
-            for(int i = 0; i < 4; i++)
+            for (int i = 0; i < 4; i++)
                 if (!blocks[i].CanMoveRight())
                     return false;
             return true;

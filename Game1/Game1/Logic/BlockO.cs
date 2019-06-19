@@ -9,15 +9,15 @@ namespace Game1
 {
     class BlockO : Figure
     {
-        public BlockO(Board board_):base(board_)
-        {}
+        public BlockO(Board board_) : base(board_)
+        { }
         public override SingleBlock[] SetBlocks(Board board_)
         {
             SingleBlock[] blocks = new SingleBlock[4];
-            blocks[0] = new SingleBlock(board_, new Point(1, 1));
-            blocks[1] = new SingleBlock(board_, new Point(1, 2));
-            blocks[2] = new SingleBlock(board_, new Point(2, 1));
-            blocks[3] = new SingleBlock(board_, new Point(2, 2));
+            blocks[0] = new SingleBlock(board_, new Point(1, 1) + position);
+            blocks[1] = new SingleBlock(board_, new Point(1, 2) + position);
+            blocks[2] = new SingleBlock(board_, new Point(2, 1) + position);
+            blocks[3] = new SingleBlock(board_, new Point(2, 2) + position);
             return blocks;
         }
         /// <summary>
@@ -30,9 +30,9 @@ namespace Game1
         }
         public override Figure LeftRotation()
         {
-  
+
             return this;
         }
     }
-  
+
 }

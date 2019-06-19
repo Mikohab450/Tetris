@@ -9,23 +9,21 @@ namespace Game1
 {
     class BlockI : Figure
     {
-        public BlockI(Board board_):base(board_)
-        {         
-            //blocks=SetBlocks
-        }
+        public BlockI(Board board_) : base(board_) { }
+        public BlockI(Figure f) : base(f) { }
         public override SingleBlock[] SetBlocks(Board board)
         {
             SingleBlock[] blocks = new SingleBlock[4];
             for (int i = 0; i < 4; i++)
-            { 
-                blocks[i] = new SingleBlock(board, new Point(i, 2) );
+            {
+                blocks[i] = new SingleBlock(board, new Point(i, 2) + position);
             }
             return blocks;
         }
- 
+
         public override Figure RightRotation()
         {
-            BlockIRotated RotatedFigure= new BlockIRotated(board);
+            BlockIRotated RotatedFigure = new BlockIRotated(this);
             return RotatedFigure;
         }
         public override Figure LeftRotation()
@@ -34,20 +32,22 @@ namespace Game1
         }
     }
     class BlockIRotated : BlockI
-    { 
-        public BlockIRotated(Board board_):base(board_)
-        { 
+    {
+
+        public BlockIRotated(Board board_) : base(board_)
+        {
         }
+        public BlockIRotated(Figure f) : base(f) { }
         public override SingleBlock[] SetBlocks(Board board_)
         {
             SingleBlock[] blocks = new SingleBlock[4];
             for (int i = 0; i < 4; i++)
-                blocks[i] = new SingleBlock(board_, new Point(1, i));
+                blocks[i] = new SingleBlock(board_, new Point(1, i) + position);
             return blocks;
         }
         public override Figure RightRotation()
         {
-            BlockI RotatedFigure = new BlockI(board);
+            BlockI RotatedFigure = new BlockI(this);
             return RotatedFigure;
         }
         public override Figure LeftRotation()

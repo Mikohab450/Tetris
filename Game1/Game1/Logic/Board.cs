@@ -9,29 +9,45 @@ namespace Game1
 {
     class Board
     {
-        protected bool gameOver=false;
-        protected const int width = 10;
-        private const int lenght = 23;  //the first line serves as a buffer for new figures
-        private SingleBlock[,] board = new SingleBlock[lenght, width];
+        Score s;
+        protected bool gameOver = false;
+        private const int width = 10;
+        private const int lenght = 22;  //the first line serves as a buffer for new figures
+        private SingleBlock[,] board = new SingleBlock[lenght + 1, width];
         private FigureFactory create;
-        public Figure current_figure;
+        private Figure current_figure;
         public Figure next_figure;
         //constructor of a board
         public Board()
         {
+            s = new Score();
             create = new FigureFactory(this);
             for (int i = 0; i < width; i++)
                 for (int j = 0; j < lenght; j++)
                     board[j, i] = null;
-            board[22,0]=new SingleBlock(this, new Point(22,0));
-            board[22, 1] = new SingleBlock(this, new Point(22, 1));
-            board[22, 2] = new SingleBlock(this, new Point(22, 2));
+
             current_figure = create.GetFigure();
             //board[18, 6] = new SingleBlock(this, new Point(5,5));
-          //  current_figure.Drop();
+            //  current_figure.Drop();
             //AddToPile();
             next_figure = create.GetFigure();
         }
+
+        public void MoveFigureDown() { current_figure.MoveDown(); }
+        public void MoveFigureLeft() { current_figure.MoveLeft(); }
+        public void MoveFigureRight() { current_figure.MoveRight(); }
+        public void FigureLeftRotation()
+        {
+            if (current_figure.CanBeRotatedTo(current_figure.LeftRotation()))
+                current_figure = current_figure.LeftRotation();
+        }
+        public void DropFigure() { current_figure.Drop(); }
+        public void FigureRightRotation()
+        {
+            if (current_figure.CanBeRotatedTo(current_figure.RightRotation()))
+                current_figure = current_figure.RightRotation();
+        }
+        public Figure GetFigure() { return current_figure; }
         public void EndTheGame() { gameOver = true; }
         public int GetWidth() { return width; }
         public int GetLenght() { return lenght; }
@@ -61,10 +77,10 @@ namespace Game1
         {
             get
             {
-                if (CheckCoords(p))
-                    return board[p.X, p.Y];
-                else
-                    throw new IndexOutOfRangeException("Given coordinates are incorrect!");
+                //if (CheckCoords(p))
+                return board[p.X, p.Y];
+                //  else
+                //   throw new IndexOutOfRangeException("Given coordinates are incorrect!");
             }
         }
         /// <summary>
@@ -75,7 +91,7 @@ namespace Game1
         /// <returns>True if the coordinates are correct, false otherwise</returns>
         public bool CheckCoords(int x, int y)
         {
-            if (y < 0 || x < 0 || y >= width || x >= lenght)
+            if (y < 0 || x < 0 || y >= width || x > lenght)
                 return false;
             return true;
         }
@@ -86,7 +102,7 @@ namespace Game1
         /// <returns>True if the coordinates are correct, false otherwise</returns>
         public bool CheckCoords(Point p)
         {
-            if (p.Y < 0 || p.X < 0 || p.Y >= width || p.X >= lenght)
+            if (p.Y < 0 || p.X < 0 || p.Y >= width || p.X > lenght)
                 return false;
             return true;
         }
@@ -97,7 +113,7 @@ namespace Game1
         public int CheckLines()
         {
             bool line_found = true;
-            int lines=0;
+            int lines = 0;
             int current_x;
             for (int i = 0; i < 4; i++)
             {
@@ -111,18 +127,21 @@ namespace Game1
                 {
                     ClearLine(current_x);
                     lines++;
+                    i--;
                 }
                 else
                     line_found = true;
-               
+
             }
+            s.AddScore(lines);
             return lines;
         }
-        public void ClearLine(int line) {
-            for (int i = line; i >0; i--)
+        public void ClearLine(int line)
+        {
+            for (int i = line; i > 0; i--)
             {
                 for (int j = 0; j < width; j++)
-                    board[i, j] = board[i -1, j];
+                    board[i, j] = board[i - 1, j];
             }
         }
         public void AddToPile()
@@ -130,8 +149,10 @@ namespace Game1
             for (int i = 0; i < 4; i++)
             {
                 SingleBlock blockToAdd = current_figure[i];
-                board[blockToAdd.position.X, blockToAdd.position.Y] = new SingleBlock(this, blockToAdd.position);
-                board[blockToAdd.position.X, blockToAdd.position.Y].Color = current_figure[i].Color;
+                board[blockToAdd.position.X, blockToAdd.position.Y] = new SingleBlock(this, blockToAdd.position)
+                {
+                    Color = current_figure[i].Color
+                };
             }
         }
         /// <summary>
@@ -149,7 +170,7 @@ namespace Game1
                 next_figure = create.GetFigure();
             }
         }
-       
+
     }
-   
+
 }

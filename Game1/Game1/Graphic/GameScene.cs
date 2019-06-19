@@ -71,24 +71,25 @@ namespace Game1
                 Color.White);
             spriteBatch.DrawString(font, score.getScore().ToString(),
                 new Vector2(scorePos - font.MeasureString(score.getScore().ToString()).X / 2, 560), Color.White);
-            
+
             for (int i = 0; i < 4; i++)
             {
                 DrawRectangle(spriteBatch,
-                    new Rectangle((board.current_figure[i].position.Y * 40 + shiftX+1), (board.current_figure[i].position.X * 40 + shiftY),
-                        39, 39), board.current_figure[i].Color);
+                    new Rectangle((board.GetFigure()[i].position.Y * 40 + shiftX + 1), (board.GetFigure()[i].position.X * 40 + shiftY),
+                        39, 39), board.GetFigure()[i].Color);
             }
 
-          
+
+
 
             for (int i = 0; i < board.GetWidth(); i++)
             {
                 for (int j = 0; j < board.GetLenght(); j++)
                 {
-                    if(board[j,i] != null)
-                      DrawRectangle(spriteBatch,
-                        new Rectangle((board[j,i].position.Y * 40 + shiftX + 1), (board[j,i].position.X * 40 + shiftY),
-                            39, 39), board[j,i].Color);
+                    if (board[j, i] != null)
+                        DrawRectangle(spriteBatch,
+                          new Rectangle((i * 40 + shiftX + 1), (j * 40 + shiftY),
+                              39, 39), board[j, i].Color);
                 }
             }
 

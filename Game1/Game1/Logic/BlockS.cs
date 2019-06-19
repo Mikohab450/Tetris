@@ -9,21 +9,22 @@ namespace Game1
 {
     class BlockS : Figure
     {
-        public BlockS(Board board):base(board)
+        public BlockS(Board board) : base(board)
         {
         }
+        public BlockS(Figure f) : base(f) { }
         public override SingleBlock[] SetBlocks(Board board_)
         {
             SingleBlock[] blocks = new SingleBlock[4];
-            blocks[0] = new SingleBlock(board_, new Point(2, 0));
-            blocks[1] = new SingleBlock(board_, new Point(2, 1));
-            blocks[2] = new SingleBlock(board_, new Point(1, 1));
-            blocks[3] = new SingleBlock(board_, new Point(1, 2));
+            blocks[0] = new SingleBlock(board_, new Point(2, 0) + position);
+            blocks[1] = new SingleBlock(board_, new Point(2, 1) + position);
+            blocks[2] = new SingleBlock(board_, new Point(1, 1) + position);
+            blocks[3] = new SingleBlock(board_, new Point(1, 2) + position);
             return blocks;
         }
         public override Figure RightRotation()
         {
-            BlockSRotated90ToRight RotatedFigure = new BlockSRotated90ToRight(board);
+            BlockSRotated90ToRight RotatedFigure = new BlockSRotated90ToRight(this);
             return RotatedFigure;
         }
         public override Figure LeftRotation()
@@ -33,21 +34,21 @@ namespace Game1
     }
     class BlockSRotated90ToRight : BlockS
     {
-        public BlockSRotated90ToRight(Board board):base(board)
-        {
-        }
+        public BlockSRotated90ToRight(Board board) : base(board)
+        { }
+        public BlockSRotated90ToRight(Figure f) : base(f) { }
         public override SingleBlock[] SetBlocks(Board board_)
         {
             SingleBlock[] blocks = new SingleBlock[4];
-            blocks[0] = new SingleBlock(board_, new Point(0, 0));
-            blocks[1] = new SingleBlock(board_, new Point(1, 0));
-            blocks[2] = new SingleBlock(board_, new Point(1, 1));
-            blocks[3] = new SingleBlock(board_, new Point(2, 1));
+            blocks[0] = new SingleBlock(board_, new Point(0, 0) + position);
+            blocks[1] = new SingleBlock(board_, new Point(1, 0) + position);
+            blocks[2] = new SingleBlock(board_, new Point(1, 1) + position);
+            blocks[3] = new SingleBlock(board_, new Point(2, 1) + position);
             return blocks;
         }
         public override Figure RightRotation()
         {
-            BlockS RotatedFigure = new BlockS(board);
+            BlockS RotatedFigure = new BlockS(this);
             return RotatedFigure;
         }
         public override Figure LeftRotation()

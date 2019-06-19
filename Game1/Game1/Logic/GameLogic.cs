@@ -43,24 +43,25 @@ namespace Game1
                 
             }
 
-            timers(gameTime,board);
+            Timers(gameTime,board);
             if (state.IsKeyUp(Keys.Left) & !previousState.IsKeyUp(Keys.Left))
-                MenuState.IsShowGameOverScene = true;
-               // board.current_figure.MoveLeft();
+                board.MoveFigureLeft();
+            MenuState.IsShowGameOverScene = true;
+            // board.current_figure.MoveLeft();
             if (state.IsKeyUp(Keys.Right) & !previousState.IsKeyUp(Keys.Right))
-                board.current_figure.MoveRight();
+                board.MoveFigureRight();
             if (state.IsKeyUp(Keys.Space) & !previousState.IsKeyUp(Keys.Space))
-                board.current_figure.Drop();
+                board.DropFigure();
             if (state.IsKeyUp(Keys.Z) & !previousState.IsKeyUp(Keys.Z))
-                board.current_figure.LeftRotation();
+                board.FigureLeftRotation();
             if (state.IsKeyUp(Keys.X) & !previousState.IsKeyUp(Keys.X))
-               board.current_figure.RightRotation();
+                board.FigureRightRotation();
             if (state.IsKeyUp(Keys.Down) & !previousState.IsKeyUp(Keys.Down))
-                board.current_figure.MoveDown();
+                board.MoveFigureDown();
             previousState = state;
         }
 
-        private void timers(GameTime gameTime, Board board)
+        private void Timers(GameTime gameTime, Board board)
         {
             if (timer > TimeSpan.Zero)
             {
