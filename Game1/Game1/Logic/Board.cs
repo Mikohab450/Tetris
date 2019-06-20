@@ -9,11 +9,10 @@ namespace Game1
 {
     class Board
     {
-        Score s;
-        protected bool gameOver = false;
+        private Score s;
         private const int width = 10;
-        private const int lenght = 22;  //the first line serves as a buffer for new figures
-        private SingleBlock[,] board = new SingleBlock[lenght + 1, width];
+        private const int lenght = 23;  //the first line serves as a buffer for new figures
+        private SingleBlock[,] board = new SingleBlock[lenght, width];
         private FigureFactory create;
         private Figure current_figure;
         public Figure next_figure;
@@ -27,10 +26,8 @@ namespace Game1
                     board[j, i] = null;
 
             current_figure = create.GetFigure();
-            //board[18, 6] = new SingleBlock(this, new Point(5,5));
-            //  current_figure.Drop();
-            //AddToPile();
             next_figure = create.GetFigure();
+
         }
 
         public void MoveFigureDown() { current_figure.MoveDown(); }
@@ -70,10 +67,10 @@ namespace Game1
         {
             get
             {
-                if (CheckCoords(i, j))
+                //if (CheckCoords(i, j))
                     return board[i, j];
-                else
-                    throw new IndexOutOfRangeException("Given coordinates are incorrect!");
+               // else
+                  //  throw new IndexOutOfRangeException("Given coordinates are incorrect!");
             }
         }
         /// <summary>
@@ -170,13 +167,11 @@ namespace Game1
         public void CheckGameOver()
         {
             for (int i = 0; i < 4; i++)
-                if (current_figure[i].position.X <=0 )
+                if (current_figure[i].position.X <=1 || !next_figure.CanSpawn())
                     EndTheGame();
-            if (!gameOver)
-            {
-                current_figure = next_figure;
-                next_figure = create.GetFigure();
-            }
+
+           current_figure = next_figure;
+           next_figure = create.GetFigure();
         }
 
         public Score GetScore()

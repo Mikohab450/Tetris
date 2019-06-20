@@ -54,7 +54,7 @@ namespace Game1
         {
             GraphicsDevice.Clear(Color.Black);
             spriteBatch.Begin();
-            spriteBatch.Draw(background, destinationRectangle: new Rectangle(0, 0, 600, 900), Color.Silver);
+            spriteBatch.Draw(background, destinationRectangle: new Rectangle(0, 0, 600, 900), color: Color.Silver);
             for (float x = -cols; x < cols; x++)
             {
                 Rectangle rectangle = new Rectangle((int) (centerX + x * gridSize), shiftY, 1, height);
@@ -75,7 +75,7 @@ namespace Game1
             for (int i = 0; i < 4; i++)
             {
                 DrawRectangle(spriteBatch,
-                    new Rectangle((board.GetFigure()[i].position.Y * 40 + shiftX + 1), (board.GetFigure()[i].position.X * 40 + shiftY),
+                    new Rectangle((board.GetFigure()[i].position.Y * 40 + shiftX + 1), ((board.GetFigure()[i].position.X-1) * 40 + shiftY),
                         39, 39), board.GetFigure()[i].Color);
             }
 
@@ -85,7 +85,7 @@ namespace Game1
                 {
                     if (board[j, i] != null)
                         DrawRectangle(spriteBatch,
-                          new Rectangle((i * 40 + shiftX + 1), (j * 40 + shiftY),
+                          new Rectangle((i * 40 + shiftX + 1), ((j-1) * 40 + shiftY),
                               39, 39), board[j, i].Color);
                 }
             }
@@ -124,24 +124,15 @@ namespace Game1
         /// </summary>
         private void DrawNext(SpriteBatch spriteBatch, Board board)
         {
-            SingleBlock [,]tab = new SingleBlock[5,8];
 
             for (int i = 0; i < 4; i++)
             {
-                tab[board.GetNext()[i].position.X, board.GetNext()[i].position.Y] = board.GetNext()[i];
+                DrawRectangle(spriteBatch,
+                       new Rectangle((board.GetNext()[i].position.X * 30  + scorePos - 55), (board.GetNext()[i].position.Y * 30 + shiftY + 270),
+                            28, 28), board.GetNext()[i].Color);
             }
+          
 
-            for (int i = 0; i < 5; i++)
-            {
-                for (int j = 0; j < 8; j++)
-                {
-                    if(tab[i,j] != null)
-                    DrawRectangle(spriteBatch,
-                        new Rectangle((i * 30 + 1 + scorePos - 55), (j * 30 + shiftY + 270),
-                            28, 28), tab[i,j].Color);
-
-                }
-            }
         }
     }
 

@@ -46,7 +46,7 @@ namespace Game1
         {
             GraphicsDevice.Clear(Color.BlanchedAlmond);
             spriteBatch.Begin();
-            spriteBatch.Draw(background, destinationRectangle: new Rectangle(0, 0, 600, 900), Color.Goldenrod);
+            spriteBatch.Draw(background, destinationRectangle: new Rectangle(0, 0, 600, 900), color: Color.Goldenrod);
             spriteBatch.Draw(LogoTexture, recLogo, Color.White);
             spriteBatch.Draw(PlayButtonTexture, recPlayButton, PlayButtonColor);
             spriteBatch.Draw(ExitButtonTexture, recExitButton, ExitButtonColor);

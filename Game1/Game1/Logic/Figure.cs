@@ -181,5 +181,14 @@ namespace Game1
                 }
             return true;
         }
+        public bool CanSpawn()
+        {
+            for (int i = 0; i < 4; i++)
+                if (board[blocks[i].position] != null)
+                    return false;
+            return true;
+
+         }
     }
+   
 }

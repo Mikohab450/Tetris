@@ -44,9 +44,9 @@ namespace Game1
         {
             
             spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend);
-            spriteBatch.Draw(background, destinationRectangle: new Rectangle(0, 0, 600, 900), Color.White*0.05f);
-            spriteBatch.Draw(PlayButtonTexture, destinationRectangle: new Rectangle(0, 0, 600, 900), PlayButtonColor);
-            spriteBatch.Draw(ExitButtonTexture, destinationRectangle: new Rectangle(0, 0, 600, 900), ExitButtonColor);
+            spriteBatch.Draw(background, destinationRectangle: new Rectangle(0, 0, 600, 900), color: Color.White*0.05f);
+            spriteBatch.Draw(PlayButtonTexture, destinationRectangle: new Rectangle(0, 0, 600, 900), color: PlayButtonColor);
+            spriteBatch.Draw(ExitButtonTexture, destinationRectangle: new Rectangle(0, 0, 600, 900), color: ExitButtonColor);
             spriteBatch.DrawString(font, Score.getScore().ToString(), new Vector2(GraphicsDevice.Viewport.Width / 2 - font.MeasureString(Score.getScore().ToString()).X /2, 360), new Color(176, 47, 31));
             spriteBatch.End();
         }
