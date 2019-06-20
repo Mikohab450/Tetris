@@ -49,7 +49,7 @@ namespace Game1
             spriteBatch.Draw(background, destinationRectangle: new Rectangle(0, 0, 600, 900), Color.White*0.05f);
             spriteBatch.Draw(PlayButtonTexture, destinationRectangle: new Rectangle(0, 0, 600, 900), PlayButtonColor);
             spriteBatch.Draw(ExitButtonTexture, destinationRectangle: new Rectangle(0, 0, 600, 900), ExitButtonColor);
-            spriteBatch.DrawString(font, score.getScore().ToString(), new Vector2(GraphicsDevice.Viewport.Width / 2 - font.MeasureString(score.getScore().ToString()).X /2, 360), new Color(176, 47, 31));
+            spriteBatch.DrawString(font, Score.getScore().ToString(), new Vector2(GraphicsDevice.Viewport.Width / 2 - font.MeasureString(Score.getScore().ToString()).X /2, 360), new Color(176, 47, 31));
             
 
             spriteBatch.End();
@@ -105,6 +105,7 @@ namespace Game1
                 if (mouseState.LeftButton == ButtonState.Pressed)
                 {
                     PlayButtonColor = Color.Red;
+                    GameScene.IsRestart = true;
                     MenuState.IsShowGameScene = true;
                 }
             }

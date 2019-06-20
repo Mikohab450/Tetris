@@ -48,10 +48,15 @@ namespace Game1
                 current_figure = current_figure.RightRotation();
         }
         public Figure GetFigure() { return current_figure; }
+        public Figure GetNext() { return next_figure; }
 
         public void EndTheGame()
         {
-            MenuState.IsShowGameOverScene = true; }
+            MenuState.IsShowGameOverScene = true;
+            for (int i = 0; i < width; i++)
+            for (int j = 0; j < lenght; j++)
+                board[j, i] = null;
+        }
         public int GetWidth() { return width; }
         public int GetLenght() { return lenght; }
         /// <summary>

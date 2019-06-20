@@ -16,7 +16,7 @@ namespace Game1
         SpriteFont font;
         private Texture2D texture1px;
         private bool IsStart = true;
-
+        static public bool IsRestart = true;
         Rectangle recPlayButton;
         Rectangle recExitButton;
         Rectangle recLogo;
@@ -69,8 +69,8 @@ namespace Game1
 
             spriteBatch.DrawString(font, "SCORE", new Vector2(scorePos - font.MeasureString("SCORE").X / 2, 520),
                 Color.White);
-            spriteBatch.DrawString(font, board.GetScore().getScore().ToString(),
-                new Vector2(scorePos - font.MeasureString(board.GetScore().getScore().ToString()).X / 2, 560), Color.White);
+            spriteBatch.DrawString(font, Score.getScore().ToString(),
+                new Vector2(scorePos - font.MeasureString(Score.getScore().ToString()).X / 2, 560), Color.White);
 
             for (int i = 0; i < 4; i++)
             {
@@ -78,9 +78,6 @@ namespace Game1
                     new Rectangle((board.GetFigure()[i].position.Y * 40 + shiftX + 1), (board.GetFigure()[i].position.X * 40 + shiftY),
                         39, 39), board.GetFigure()[i].Color);
             }
-
-
-
 
             for (int i = 0; i < board.GetWidth(); i++)
             {
@@ -93,6 +90,8 @@ namespace Game1
                 }
             }
 
+            DrawNext(spriteBatch,board);
+
             spriteBatch.End();
           //  gameLogic.Draw(spriteBatch, gameTime);
         }
@@ -103,6 +102,12 @@ namespace Game1
             {
                 texture1px = new Texture2D(GraphicsDevice, 1, 1);
                 texture1px.SetData(new Color[] {Color.White});
+            }
+
+            if (IsRestart)
+            {
+                board.GetScore().ClearScore();
+                IsRestart = false;
             }
 
             gameLogic.Update(gameTime, board);
@@ -117,6 +122,28 @@ namespace Game1
             }
 
             spriteBatch.Draw(rect, coords, color);
+        }
+
+        private void DrawNext(SpriteBatch spriteBatch, Board board)
+        {
+            SingleBlock [,]tab = new SingleBlock[5,8];
+
+            for (int i = 0; i < 4; i++)
+            {
+                tab[board.GetNext()[i].position.X, board.GetNext()[i].position.Y] = board.GetNext()[i];
+            }
+
+            for (int i = 0; i < 5; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    if(tab[i,j] != null)
+                    DrawRectangle(spriteBatch,
+                        new Rectangle((i * 30 + 1 + scorePos - 55), (j * 30 + shiftY + 270),
+                            28, 28), tab[i,j].Color);
+
+                }
+            }
         }
     }
 

@@ -8,11 +8,16 @@ namespace Game1
 {
     class Score
     {
-        private int score = 0;
+        static private int score = 0;
 
-        public int getScore()
+        static public int getScore()
         {
             return score;
+        }
+
+        public void ClearScore()
+        {
+            score = 0;
         }
 
         public void addScore(int _lines) {
