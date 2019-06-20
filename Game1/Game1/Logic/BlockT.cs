@@ -9,7 +9,7 @@ namespace Game1
 {
     class BlockT : Figure
     {
-        public BlockT(Board board) : base(board)
+        public BlockT(Board board_, Color color) : base(board_, color)
         {
         }
         public BlockT(Figure f) : base(f) { }
@@ -36,9 +36,9 @@ namespace Game1
     class BlockTRotated90ToRight : BlockT
     {
         public BlockTRotated90ToRight(Figure f) : base(f) { }
-        public BlockTRotated90ToRight(Board board) : base(board)
-        {
-        }
+        //public BlockTRotated90ToRight(Board board) : base(board)
+        //{
+        //}
         public override SingleBlock[] SetBlocks(Board board_)
         {
             SingleBlock[] blocks = new SingleBlock[4];
@@ -63,9 +63,9 @@ namespace Game1
     class BlockTRotated180ToRight : BlockT
     {
         public BlockTRotated180ToRight(Figure f) : base(f) { }
-        public BlockTRotated180ToRight(Board board) : base(board)
-        {
-        }
+        //public BlockTRotated180ToRight(Board board) : base(board)
+        //{
+        //}
         public override SingleBlock[] SetBlocks(Board board_)
         {
             SingleBlock[] blocks = new SingleBlock[4];
@@ -87,9 +87,9 @@ namespace Game1
     class BlockTRotated270ToRight : BlockT
     {
         public BlockTRotated270ToRight(Figure f) : base(f) { }
-        public BlockTRotated270ToRight(Board board) : base(board)
-        {
-        }
+        //public BlockTRotated270ToRight(Board board) : base(board)
+        //{
+        //}
         public override SingleBlock[] SetBlocks(Board board_)
         {
             SingleBlock[] blocks = new SingleBlock[4];

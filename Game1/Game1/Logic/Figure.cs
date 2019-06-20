@@ -26,13 +26,15 @@ namespace Game1
         //public Figure() { }
         private SingleBlock[] blocks;
         //constructor
-        public Figure(Board board_)
+        public Figure(Board board_,Color color_)
         {
             board = board_;
             position.X = 0;
             position.Y = 3;
             blocks = SetBlocks(board);
-            SetColor();
+            color = color_;
+            for (int i = 0; i < 4; i++)
+                blocks[i].Color = color;
         }
         public Figure(Figure f)
         {
