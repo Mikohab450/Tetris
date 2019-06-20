@@ -10,62 +10,65 @@ namespace Game1
     class FigureFactory
     {
         private Figure newFigure;
-        private List<Figure> Figury;
-        private  Color[] ColorSet={
-            Color.Blue, Color.Crimson ,Color.Cyan, Color.White,
-            Color.Yellow, Color.Pink, Color.Green, Color.Teal ,Color.Purple, Color.Orange};
-
-        private int[] set = new int[7] { 0, 1, 2, 3, 4, 5, 6 };
+        private LinkedList<Figure> Figury;
+        Dictionary<int,Color> ColorMap = new Dictionary<int, Color> { { 0, Color.Blue }, {1,Color.Crimson } ,{2,Color.Orange }, {3,Color.White },
+            {4, Color.Yellow }, {5,Color.DeepPink }, {6,Color.Green }, {7,Color.LightBlue } ,{8,Color.Purple }, {9,Color.DarkCyan} };
+        private int[] set;
         private Random rnd;
         private Board board;
+
 
         
 
         public FigureFactory(Board board)
         {
-            Figury = new List<Figure>();
+            set = new int[14];
+            for (int i = 0; i < 14; i++)
+                set[i] = i;
+            Figury = new LinkedList<Figure>();
             rnd = new Random();
             this.board = board;
+      
 
         }
         /// <summary>
-        /// Genrates list of a random permutation of 7-element set of figures
+        /// Genrates list of a random permutation of 14-element set of figures
         /// </summary>
         private void GenerateSequenceOfFigures()
         {
             for (int i = 0; i < 7; i++)
             {
                 int random_index = rnd.Next(0, 6 - i);
-                int random_color_index = rnd.Next(0,8-i);
-                Color temp = ColorSet[random_color_index];
-                switch (set[random_index])
+                int random_color_index = rnd.Next(0,9-i);
+                  Color temp = ColorMap[random_color_index];
+                 switch (set[random_index])
                 {
                      
                     case 0:
-                        Figury.Add(new BlockI(board,temp));
+                        Figury.AddFirst(new BlockI(board,temp));
                         break;
                     case 1:
-                        Figury.Add(new BlockL(board,temp));
+                        Figury.AddFirst(new BlockL(board,temp));
                         break;
                     case 2:
-                        Figury.Add(new BlockJ(board,temp));
+                        Figury.AddFirst(new BlockJ(board,temp));
                         break;
                     case 3:
-                        Figury.Add(new BlockS(board,temp));
+                        Figury.AddFirst(new BlockS(board,temp));
                         break;
                     case 4:
-                        Figury.Add(new BlockZ(board,temp));
+                        Figury.AddFirst(new BlockZ(board,temp));
                         break;
                     case 5:
-                        Figury.Add(new BlockO(board,temp));
+                        Figury.AddFirst(new BlockO(board,temp));
                         break;
                     default:
-                        Figury.Add(new BlockT(board,temp));
+                        Figury.AddFirst(new BlockT(board,temp));
                         break;
                 }
 
-                ColorSet[random_color_index] = ColorSet[9 - i];
-                ColorSet[9 - i]= temp;
+                ColorMap[random_color_index] = ColorMap[9 - i];
+                ColorMap[9 - i]= temp;
                 int swap = set[random_index];
                 set[random_index] = set[6 - i];
                 set[6 - i] = swap;
@@ -77,12 +80,12 @@ namespace Game1
         /// <returns>Randomly generated figure</returns>
         public Figure GetFigure()
         {
-            if (!Figury.Any())
+            if (Figury.Count()==0)//!Figury.Any())
             {
                 GenerateSequenceOfFigures();
             }
-            newFigure = Figury[0];
-            Figury.RemoveAt(0);
+            newFigure = Figury.First();
+            Figury.RemoveFirst();
             return newFigure;
         }
     }

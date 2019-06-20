@@ -20,8 +20,7 @@ namespace Game1
         /// <param name="p">Coordinates of the block</param>
         public SingleBlock(Board board_,Point p)
         {
-                position = p;
-           // else throw new IndexOutOfRangeException("Given coordinates are incorrect!");
+             position = p;
             board = board_;
         }
         /// <summary>
@@ -50,7 +49,7 @@ namespace Game1
         /// <returns>True if the block can be moved, false otherwise</returns>
         public bool CanMoveDown()
         {
-            if (position.X + 1 >= board.GetLenght() || board[position.X+1, position.Y] != null )
+            if (position.X + 1 >= board.GeHeight() || board[position.X+1, position.Y] != null )
                 return false;
             return true;
         }

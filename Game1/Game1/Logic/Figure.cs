@@ -9,21 +9,24 @@ namespace Game1
 {
     abstract class Figure
     {
+        protected Board board;
+        internal protected Point position;
+        private SingleBlock[] blocks;
         private Color color;
+        /// <summary>
+        /// Color of a figure. Setting it will result stting the colors of all the blocks it contains
+        /// </summary>
         public Color Color
         {
             get { return color; }
             set
             {
-                color = value;
+                this.color = value;
                 for (int i = 0; i < 4; i++)
                     blocks[i].Color = color;
             }
         }
 
-        protected Board board;
-        internal protected Point position;
-        private SingleBlock[] blocks;
         //constructor
         public Figure(Board board_,Color color_)
         {
@@ -35,6 +38,10 @@ namespace Game1
             for (int i = 0; i < 4; i++)
                 blocks[i].Color = color;
         }
+        /// <summary>
+        /// Copying constructor
+        /// </summary>
+        /// <param name="f"></param>
         public Figure(Figure f)
         {
             this.board = f.board;
@@ -77,12 +84,21 @@ namespace Game1
                 position.X++;
             }
         }
+        /// <summary>
+        /// Set of actions that are performed when 
+        /// the figure cannot move further down
+        /// </summary>
         public void FigureDropeed()
         {
             board.AddToPile();
             board.CheckLines();
             board.CheckGameOver();
         }
+        /// <summary>
+        /// Indexor that enables to access one of the figures block
+        /// </summary>
+        /// <param name="i">index of the block</param>
+        /// <returns>one of the blocks creating figure</returns>
         public SingleBlock this[int i]
         {
             get
@@ -94,32 +110,25 @@ namespace Game1
             }
 
         }
-        /// <summary>
-        /// Generates a random color and sets it to all of blocks
-        /// </summary>
-        public void SetColor()
-        {
-            Random r = new Random();
-            Color c = new Color(r.Next(255), r.Next(255), r.Next(255));
-            color = c;
-            for (int i = 0; i < 4; i++)
-                blocks[i].Color = c;
-        }
+   
 
-
+  
         /// <summary>
         /// Obraca figure o 90 stopni w prawo
         /// </summary>
         abstract public Figure RightRotation();
         /// <summary>
-        /// Obraca figure o 90 stopni w prawo
+        /// Obraca figure o 90 stopni w lewo
         /// </summary>
         abstract public Figure LeftRotation();
 
-        public virtual SingleBlock[] SetBlocks(Board board_)
-        {
-            return null;//new SingleBlock[4];
-        }
+        /// <summary>
+        /// Puts blocks of figure in proper positions
+        /// </summary>
+        /// <param name="board_">Board where game takes place</param>
+        /// <returns>Set of setted blocks</returns>
+        abstract public SingleBlock[] SetBlocks(Board board_);
+       
         /// <summary>
         /// Chcks if the figure can be rotated
         /// </summary>
@@ -181,6 +190,10 @@ namespace Game1
                 }
             return true;
         }
+        /// <summary>
+        /// Deicides wheter the next figure can be spawn on the board
+        /// </summary>
+        /// <returns>True if the figure ca be spawn , false otherwise</returns>
         public bool CanSpawn()
         {
             for (int i = 0; i < 4; i++)

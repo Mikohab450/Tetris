@@ -11,8 +11,8 @@ namespace Game1
     {
         private Score s;
         private const int width = 10;
-        private const int lenght = 23;  //the first line serves as a buffer for new figures
-        private SingleBlock[,] board = new SingleBlock[lenght, width];
+        private const int height = 23;  
+        private SingleBlock[,] board = new SingleBlock[height, width];
         private FigureFactory create;
         private Figure current_figure;
         public Figure next_figure;
@@ -22,40 +22,71 @@ namespace Game1
             s = new Score();
             create = new FigureFactory(this);
             for (int i = 0; i < width; i++)
-                for (int j = 0; j < lenght; j++)
+                for (int j = 0; j < height; j++)
                     board[j, i] = null;
 
             current_figure = create.GetFigure();
             next_figure = create.GetFigure();
 
         }
-
+        /// <summary>
+        /// If its possible, moves the currently displayed figure down
+        /// </summary>
         public void MoveFigureDown() { current_figure.MoveDown(); }
+        /// <summary>
+        /// If its possible, moves the currently displayed figure left
+        /// </summary>
         public void MoveFigureLeft() { current_figure.MoveLeft(); }
+        /// <summary>
+        /// If its possible, moves the currently displayed figure right
+        /// </summary>
         public void MoveFigureRight() { current_figure.MoveRight(); }
+        /// <summary>
+        /// If its possible, rotates the currently displayed figure left
+        /// </summary>
         public void FigureLeftRotation()
         {
             if (current_figure.CanBeRotatedTo(current_figure.LeftRotation()))
                 current_figure = current_figure.LeftRotation();
         }
+        /// <summary>
+        /// If its possible, drops the currently displayed figure to the bottom
+        /// </summary>
         public void DropFigure() { current_figure.Drop(); }
+        /// <summary>
+        /// If its possible, rotates the currently displayed figure left
+        /// </summary>
         public void FigureRightRotation()
         {
             if (current_figure.CanBeRotatedTo(current_figure.RightRotation()))
                 current_figure = current_figure.RightRotation();
         }
+        /// <summary>
+        /// Accesor of a current figure
+        /// </summary>
+        /// <returns>Currently displayed figure</returns>
         public Figure GetFigure() { return current_figure; }
+        /// <summary>
+        /// Accesor of a next figure
+        /// </summary>
+        /// <returns>Figure, that will be used next</returns>
         public Figure GetNext() { return next_figure; }
 
+        /// <summary>
+        /// Function that raises flag that the game is ended and clears the board
+        /// </summary>
         public void EndTheGame()
         {
             MenuState.IsShowGameOverScene = true;
             for (int i = 0; i < width; i++)
-            for (int j = 0; j < lenght; j++)
+            for (int j = 0; j < height; j++)
                 board[j, i] = null;
         }
-        public int GetWidth() { return width; }
-        public int GetLenght() { return lenght; }
+
+
+     
+        public int GetWidth() { return width; }         // Accesor of the boards width
+        public int GeHeight() { return height; }         // Accesor of the boards height
         /// <summary>
         /// Indexer that allows to get the value from the board.
         /// Indexes of cols and rows are counted from 0
@@ -67,10 +98,10 @@ namespace Game1
         {
             get
             {
-                //if (CheckCoords(i, j))
+                if (CheckCoords(i, j))
                     return board[i, j];
-               // else
-                  //  throw new IndexOutOfRangeException("Given coordinates are incorrect!");
+               else
+                    throw new IndexOutOfRangeException("Given coordinates are incorrect!");
             }
         }
         /// <summary>
@@ -82,10 +113,10 @@ namespace Game1
         {
             get
             {
-                //if (CheckCoords(p))
+                if (CheckCoords(p))
                 return board[p.X, p.Y];
-                //  else
-                //   throw new IndexOutOfRangeException("Given coordinates are incorrect!");
+                  else
+                  throw new IndexOutOfRangeException("Given coordinates are incorrect!");
             }
         }
         /// <summary>
@@ -96,7 +127,7 @@ namespace Game1
         /// <returns>True if the coordinates are correct, false otherwise</returns>
         public bool CheckCoords(int x, int y)
         {
-            if (y < 0 || x < 0 || y >= width || x > lenght)
+            if (y < 0 || x < 0 || y > width || x > height)
                 return false;
             return true;
         }
@@ -107,7 +138,7 @@ namespace Game1
         /// <returns>True if the coordinates are correct, false otherwise</returns>
         public bool CheckCoords(Point p)
         {
-            if (p.Y < 0 || p.X < 0 || p.Y >= width || p.X > lenght)
+            if (p.Y < 0 || p.X < 0 || p.Y >= width || p.X > height)
                 return false;
             return true;
         }
@@ -115,14 +146,28 @@ namespace Game1
         /// Checks if any lines are full, and if there are any, clears them
         /// </summary>
         /// <returns>The number of full lines</returns>
-        public int CheckLines()
+        public void CheckLines()
         {
             bool line_found = true;
             int lines = 0;
-            int current_x;
-            for (int i = 0; i < 4; i++)
+            int current_x= current_figure[0].position.X;
+            int indexes_to_check;   //number of rows to be checked,depending on what figure was dropped
+            if (current_figure is BlockLRotated180ToRight || current_figure is BlockJRotated180ToRight || current_figure is BlockZRotated90ToRight || current_figure is BlockSRotated90ToRight
+                || current_figure is BlockTRotated90ToRight || current_figure is BlockTRotated270ToRight)
+                indexes_to_check = 3;
+            else if (current_figure is BlockLRotated90ToRight || current_figure is BlockJRotated90ToRight || current_figure is BlockTRotated180ToRight
+                || current_figure is BlockJRotated270ToRight ||  current_figure is BlockJRotated270ToRight)
+                indexes_to_check = 2;
+            else if (current_figure is BlockIRotated)
+                indexes_to_check = 1;
+            else if (current_figure is BlockI)
+                indexes_to_check = 4;
+            else if (current_figure is BlockJ || current_figure is BlockL || current_figure is BlockZRotated90ToRight || current_figure is BlockSRotated90ToRight)
+                indexes_to_check = 3;
+            else
+                indexes_to_check = 2;
+            for (int i = 0; i <indexes_to_check ; i++)      //for all the rows
             {
-                current_x = current_figure[i].position.X;
                 for (int j = 0; j < width && line_found; j++)
                 {
                     if (board[current_x, j] == null)
@@ -131,16 +176,23 @@ namespace Game1
                 if (line_found)
                 {
                     ClearLine(current_x);
-                    lines++;
-                    i--;
+                    lines++;        //increments number of lines found
+ 
                 }
                 else
+                {
                     line_found = true;
+                }
+                current_x++;            //move down
+
 
             }
-            s.addScore(lines);
-            return lines;
+            s.addScore(lines);          //add to score
         }
+        /// <summary>
+        /// Clears the line
+        /// </summary>
+        /// <param name="line">Index of a row to be cleaned</param>
         public void ClearLine(int line)
         {
             for (int i = line; i > 0; i--)
@@ -149,6 +201,9 @@ namespace Game1
                     board[i, j] = board[i - 1, j];
             }
         }
+        /// <summary>
+        /// Adds a figure to a board
+        /// </summary>
         public void AddToPile()
         {
             for (int i = 0; i < 4; i++)
@@ -161,7 +216,7 @@ namespace Game1
             }
         }
         /// <summary>
-        /// If the game is over, it raises the gameOverFlag
+        /// If the game is over, performs EndTheGame method
         /// if it isn't, it creates the next figures
         /// </summary>
         public void CheckGameOver()
@@ -173,10 +228,13 @@ namespace Game1
            current_figure = next_figure;
            next_figure = create.GetFigure();
         }
+        /// <summary>
+        /// Clears the score
+        /// </summary>
 
-        public Score GetScore()
+        public void ClearScore()
         {
-            return s;
+            s.ClearScore();
         }
     }
 

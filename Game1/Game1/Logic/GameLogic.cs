@@ -23,22 +23,26 @@ namespace Game1
 
         public void Update(GameTime gameTime, Board board)
         {
-            KeyboardState state = Keyboard.GetState();
-            Timers(gameTime,board);
-            MakeHarder(timer2,timer3,lvl);
-            if (state.IsKeyUp(Keys.Left) & !previousState.IsKeyUp(Keys.Left))
-                board.MoveFigureLeft();
-            if (state.IsKeyUp(Keys.Right) & !previousState.IsKeyUp(Keys.Right))
-                board.MoveFigureRight();
-            if (state.IsKeyUp(Keys.Space) & !previousState.IsKeyUp(Keys.Space))
-                board.DropFigure();
-            if (state.IsKeyUp(Keys.Z) & !previousState.IsKeyUp(Keys.Z))
-                board.FigureLeftRotation();
-            if (state.IsKeyUp(Keys.X) & !previousState.IsKeyUp(Keys.X))
-                board.FigureRightRotation();
-            if (state.IsKeyUp(Keys.Down) & !previousState.IsKeyUp(Keys.Down))
-                board.MoveFigureDown();
-            previousState = state;
+            try
+            {
+                KeyboardState state = Keyboard.GetState();
+                Timers(gameTime, board);
+                MakeHarder(timer2, timer3, lvl);
+                if (state.IsKeyUp(Keys.Left) & !previousState.IsKeyUp(Keys.Left))
+                    board.MoveFigureLeft();
+                if (state.IsKeyUp(Keys.Right) & !previousState.IsKeyUp(Keys.Right))
+                    board.MoveFigureRight();
+                if (state.IsKeyUp(Keys.Space) & !previousState.IsKeyUp(Keys.Space))
+                    board.DropFigure();
+                if (state.IsKeyUp(Keys.Z) & !previousState.IsKeyUp(Keys.Z))
+                    board.FigureLeftRotation();
+                if (state.IsKeyUp(Keys.X) & !previousState.IsKeyUp(Keys.X))
+                    board.FigureRightRotation();
+                if (state.IsKeyUp(Keys.Down) & !previousState.IsKeyUp(Keys.Down))
+                    board.MoveFigureDown();
+                previousState = state;
+            }
+            catch (IndexOutOfRangeException iE) {};
         }
         /// <summary>
         /// Calculates the game difficulty (block falling speed)

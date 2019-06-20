@@ -81,7 +81,7 @@ namespace Game1
 
             for (int i = 0; i < board.GetWidth(); i++)
             {
-                for (int j = 0; j < board.GetLenght(); j++)
+                for (int j = 0; j < board.GeHeight(); j++)
                 {
                     if (board[j, i] != null)
                         DrawRectangle(spriteBatch,
@@ -102,7 +102,7 @@ namespace Game1
             }
             if (IsRestart)
             {
-                board.GetScore().ClearScore();
+                board.ClearScore();
                 IsRestart = false;
             }
             gameLogic.Update(gameTime, board);
@@ -128,7 +128,7 @@ namespace Game1
             for (int i = 0; i < 4; i++)
             {
                 DrawRectangle(spriteBatch,
-                       new Rectangle((board.GetNext()[i].position.X * 30  + scorePos - 55), (board.GetNext()[i].position.Y * 30 + shiftY + 270),
+                       new Rectangle((board.GetNext()[i].position.Y * 30  + scorePos - 150), (board.GetNext()[i].position.X * 30 + shiftY + 330),
                             28, 28), board.GetNext()[i].Color);
             }
           

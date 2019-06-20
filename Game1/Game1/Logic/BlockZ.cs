@@ -38,10 +38,10 @@ namespace Game1
         public override SingleBlock[] SetBlocks(Board board_)
         {
             SingleBlock[] blocks = new SingleBlock[4];
-            blocks[0] = new SingleBlock(board_, new Point(2, 1) + position);
+            blocks[0] = new SingleBlock(board_, new Point(0, 2) + position);
             blocks[1] = new SingleBlock(board_, new Point(1, 1) + position);
             blocks[2] = new SingleBlock(board_, new Point(1, 2) + position);
-            blocks[3] = new SingleBlock(board_, new Point(0, 2) + position);
+            blocks[3] = new SingleBlock(board_, new Point(2, 1) + position);
             return blocks;
         }
         public override Figure RightRotation()
