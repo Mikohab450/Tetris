@@ -33,10 +33,6 @@ namespace Game1
     }
     class BlockIRotated : BlockI
     {
-
-        //public BlockIRotated(Board board_) : base(board_)
-        //{
-        //}
         public BlockIRotated(Figure f) : base(f) { }
         public override SingleBlock[] SetBlocks(Board board_)
         {

@@ -13,11 +13,12 @@ namespace Game1
     {
         Game game;
 
-        Texture2D background;
-        SpriteFont font;
-
+        private SpriteFont font;
         Rectangle recPlayButton;
         Rectangle recExitButton;
+        Rectangle Cursor;
+
+        Texture2D background;
         Texture2D PlayButtonTexture;
         Texture2D ExitButtonTexture;
 
@@ -25,9 +26,6 @@ namespace Game1
         Color ExitButtonColor = Color.White;
 
         MouseState mouseState;
-        Rectangle Cursor;
-
-        private Score score = new Score();
         public GameOverScene(Game game) : base(game)
         {
             this.game = game;
@@ -50,8 +48,6 @@ namespace Game1
             spriteBatch.Draw(PlayButtonTexture, destinationRectangle: new Rectangle(0, 0, 600, 900), PlayButtonColor);
             spriteBatch.Draw(ExitButtonTexture, destinationRectangle: new Rectangle(0, 0, 600, 900), ExitButtonColor);
             spriteBatch.DrawString(font, Score.getScore().ToString(), new Vector2(GraphicsDevice.Viewport.Width / 2 - font.MeasureString(Score.getScore().ToString()).X /2, 360), new Color(176, 47, 31));
-            
-
             spriteBatch.End();
         }
 
@@ -65,35 +61,25 @@ namespace Game1
 
         private void CalculateItemsSize()
         {
-            /*Calculate buttons size */
             int Height = GraphicsDevice.Viewport.Height / 12;
             int Width = GraphicsDevice.Viewport.Width / 2;
             recPlayButton.Height = Height;
             recPlayButton.Width = Width;
-            //
             recExitButton.Height = Height;
             recExitButton.Width = Width;
-            /* Calculate logo size */
            
         }
         private void CalculateItemsPositions()
         {
-
-            /* Calculate button position */
             int positionx = GraphicsDevice.Viewport.Width / 2 - recPlayButton.Width / 2;
-            //
-          
-            //
             recPlayButton.X = positionx;
             recPlayButton.Y = 6 * recPlayButton.Height;
-            //
             recExitButton.X = positionx;
             recExitButton.Y = recPlayButton.Y + 8 * recPlayButton.Height / 3;
         }
 
         private void UpdateCursorPosition()
         {
-            /* Update Cursor position by Mouse */
             mouseState = Mouse.GetState();
             Cursor.X = mouseState.X; Cursor.Y = mouseState.Y;
         }

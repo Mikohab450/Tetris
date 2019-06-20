@@ -34,8 +34,6 @@ namespace Game1
     }
     class BlockSRotated90ToRight : BlockS
     {
-        //public BlockSRotated90ToRight(Board board) : base(board)
-        //{ }
         public BlockSRotated90ToRight(Figure f) : base(f) { }
         public override SingleBlock[] SetBlocks(Board board_)
         {

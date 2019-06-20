@@ -23,7 +23,6 @@ namespace Game1
 
         protected Board board;
         internal protected Point position;
-        //public Figure() { }
         private SingleBlock[] blocks;
         //constructor
         public Figure(Board board_,Color color_)
@@ -40,7 +39,6 @@ namespace Game1
         {
             this.board = f.board;
             this.position = f.position;
-
             blocks = SetBlocks(board);
             this.Color = f.Color;
         }
@@ -148,6 +146,9 @@ namespace Game1
                     return false;
             return true;
         }
+        /// <summary>
+        /// Moves the figure to the bottom-most position
+        /// </summary>
         public void Drop()
         {
             while (CanMoveDown())

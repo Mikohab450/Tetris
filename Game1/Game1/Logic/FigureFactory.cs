@@ -11,7 +11,6 @@ namespace Game1
     {
         private Figure newFigure;
         private List<Figure> Figury;
-        // private Figure[] set =new Figure[7];
         private  Color[] ColorSet={
             Color.Blue, Color.Crimson ,Color.Cyan, Color.White,
             Color.Yellow, Color.Pink, Color.Green, Color.Teal ,Color.Purple, Color.Orange};
@@ -27,13 +26,6 @@ namespace Game1
             Figury = new List<Figure>();
             rnd = new Random();
             this.board = board;
-            //set[0] = new BlockI(board);
-            //set[1] = new BlockO(board);
-            //set[2] = new BlockJ(board);
-            //set[3] = new BlockL(board);
-            //set[4] = new BlockS(board);
-            //set[5] = new BlockZ(board);
-            //set[6] = new BlockT(board);
 
         }
         /// <summary>
@@ -70,7 +62,6 @@ namespace Game1
                     default:
                         Figury.Add(new BlockT(board,temp));
                         break;
-
                 }
 
                 ColorSet[random_color_index] = ColorSet[9 - i];
@@ -78,7 +69,6 @@ namespace Game1
                 int swap = set[random_index];
                 set[random_index] = set[6 - i];
                 set[6 - i] = swap;
-                ;
             }
         }
         /// <summary>
@@ -91,7 +81,6 @@ namespace Game1
             {
                 GenerateSequenceOfFigures();
             }
-
             newFigure = Figury[0];
             Figury.RemoveAt(0);
             return newFigure;

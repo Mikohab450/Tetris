@@ -10,13 +10,6 @@ namespace Game1
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
-
-    public enum GameStates
-    {
-        Menu,
-        Playing,
-        Paused
-    }
     public class MainGame : Game
     {
         GraphicsDeviceManager graphics;
@@ -31,20 +24,6 @@ namespace Game1
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            //Creating a board is gituwa as well
-            //Board b = new Board();
-            //b.current_figure = new BlockIRotated(b);
-            //b.current_figure.Drop();
-            //b.current_figure = new BlockIRotated(b);
-            //for(int i=0;i<4; i++) b.current_figure.MoveRight();
-            //b.current_figure.Drop();
-            //b.current_figure = new BlockO(b);
-            //for (int i = 0; i < 8; i++) b.current_figure.MoveRight();
-            //b.current_figure.MoveRight();
-
-            //b.current_figure.Drop();
-            //Creating a block is gituwa
-            //BlockI nowy =new BlockI(new Board());
         }
 
         /// <summary>
@@ -59,9 +38,6 @@ namespace Game1
             graphics.PreferredBackBufferWidth = 600;
             graphics.PreferredBackBufferHeight = 900;
             graphics.ApplyChanges();
-            
-
-
 
             base.Initialize();
             _board = new Board();
@@ -69,7 +45,6 @@ namespace Game1
             gameScene = new GameScene(this, _board);
             gameOverScene = new GameOverScene(this);
             IsMouseVisible = true;
-              //  Window.AllowUserResizing = true;
             
             MenuState.IsShowMainMenuScene = true;
         }
@@ -79,12 +54,8 @@ namespace Game1
         /// all of your content.
         /// </summary>
         protected override void LoadContent()
-        {
-            // Create a new SpriteBatch, which can be used to draw textures.
+        {  
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            
-
-            // TODO: use this.Content to load your game content here
         }
 
         /// <summary>
@@ -94,7 +65,6 @@ namespace Game1
         protected override void UnloadContent()
         {
             Content.Unload();
-            // TODO: Unload any non ContentManager content here
         }
 
         /// <summary>
@@ -115,16 +85,6 @@ namespace Game1
                 gameScene.Update(gameTime);
             if (MenuState.IsShowGameOverScene)
                 gameOverScene.Update();
-            
-            //    GameState.IsShowMainMenuScene = true;
-            ////if (Keyboard.GetState().IsKeyDown(Keys.Down))
-
-            //if (GameState.IsShowGameScene)
-            //{
-                
-
-            //    
-
             base.Update(gameTime);
         }
 
@@ -140,11 +100,6 @@ namespace Game1
                 gameScene.Draw(spriteBatch, gameTime);
             if (MenuState.IsShowGameOverScene)
                 gameOverScene.Draw(spriteBatch, gameTime);
-            base.Draw(gameTime);
-            //    // TODO: Add your drawing code here
-            //    block.Draw(gameTime, shiftX + 1, shiftY);
-            //}
-
             base.Draw(gameTime);
         }
 

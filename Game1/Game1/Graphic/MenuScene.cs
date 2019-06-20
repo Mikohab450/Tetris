@@ -59,6 +59,9 @@ namespace Game1
             UpdateCursorPosition();
             ButtonsEvents();
         }
+        /// <summary>
+        /// Responsible for calculating optimal size of items
+        /// </summary>
         private void CalculateItemsSize()
         {
             /*Calculate buttons size */
@@ -74,10 +77,11 @@ namespace Game1
             recLogo.Width = GraphicsDevice.Viewport.Width / 2;
             //
         }
+        /// <summary>
+        /// Responsible for calculating position of items depending on screen height and width
+        /// </summary>
         private void CalculateItemsPositions()
         {
-
-            /* Calculate button position */
             int positionx = GraphicsDevice.Viewport.Width / 2 - recPlayButton.Width / 2;
             //
             recLogo.X = GraphicsDevice.Viewport.Width / 2 - recLogo.Width / 2;
@@ -89,13 +93,18 @@ namespace Game1
             recExitButton.X = positionx;
             recExitButton.Y = recPlayButton.Y + 6 * recPlayButton.Height / 3;
         }
-
+        /// <summary>
+        /// Tracks cursor position
+        /// </summary>
         private void UpdateCursorPosition()
         {
             /* Update Cursor position by Mouse */
             mouseState = Mouse.GetState();
             Cursor.X = mouseState.X; Cursor.Y = mouseState.Y;
         }
+        /// <summary>
+        /// Is responsible for catching interactions of buttons with cursor
+        /// </summary>
         private void ButtonsEvents()
         {
             if ((recPlayButton.Intersects(Cursor)))

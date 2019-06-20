@@ -13,41 +13,21 @@ namespace Game1
     {
         Game game;
         private Board board;
-
-        private bool IsStart = true;
-
         KeyboardState previousState;
-
-        private TimeSpan timer = new TimeSpan(0, 0, 1);
-        private TimeSpan timer2 = new TimeSpan(0, 0, 1);
-        private TimeSpan timer3 = new TimeSpan(0, 0, 10);
+        private int lvl = 1;
+        private TimeSpan timer = new TimeSpan(0, 0, 0, 0,1000);
+        private TimeSpan timer2 = new TimeSpan(0, 0, 0, 0,1000);
+        private TimeSpan timer3 = new TimeSpan(0, 0, 0, 0,100);
 
         private GameScene gameScene;
-        
-
-     
 
         public void Update(GameTime gameTime, Board board)
         {
             KeyboardState state = Keyboard.GetState();
-            if (IsStart)
-            {
-                //currentBlock.addToList(new SingleBlock((int)(2 * gameScene.gridSize) + gameScene.shiftX + 1, (int)(2 * gameScene.gridSize) + gameScene.shiftY,
-                //    Color.Fuchsia));
-                //currentBlock.addToList(new SingleBlock((int)(3 * gameScene.gridSize) + gameScene.shiftX + 1, (int)(2 * gameScene.gridSize) + gameScene.shiftY,
-                //    Color.Fuchsia));
-                //currentBlock.addToList(new SingleBlock((int)(4 * gameScene.gridSize) + gameScene.shiftX + 1, (int)(2 * gameScene.gridSize) + gameScene.shiftY,
-                //    Color.Fuchsia));
-               // currentBlock = new BlocksControl();
-               
-                
-            }
-
             Timers(gameTime,board);
+            MakeHarder(timer2,timer3,lvl);
             if (state.IsKeyUp(Keys.Left) & !previousState.IsKeyUp(Keys.Left))
                 board.MoveFigureLeft();
-          //  MenuState.IsShowGameOverScene = true;
-            // board.current_figure.MoveLeft();
             if (state.IsKeyUp(Keys.Right) & !previousState.IsKeyUp(Keys.Right))
                 board.MoveFigureRight();
             if (state.IsKeyUp(Keys.Space) & !previousState.IsKeyUp(Keys.Space))
@@ -60,7 +40,9 @@ namespace Game1
                 board.MoveFigureDown();
             previousState = state;
         }
-
+        /// <summary>
+        /// Calculates the game difficulty (block falling speed)
+        /// </summary>
         private void Timers(GameTime gameTime, Board board)
         {
             if (timer > TimeSpan.Zero)
@@ -68,15 +50,25 @@ namespace Game1
                 timer -= gameTime.ElapsedGameTime;
                 if (timer <= TimeSpan.Zero)
                 {
-                   // currentBlock.updateList();
                     board.MoveFigureDown();
                     timer = timer2;
                 }
 
             }
-         
-            // TODO: Add your update logic here
-   
+        }
+        /// <summary>
+        /// Increases the game difficulty depending on current score
+        /// </summary>
+        private void MakeHarder(TimeSpan timer2, TimeSpan timer3, int lvl)
+        {
+            if (Score.getScore() >= lvl * 3000)
+            {
+                lvl++;
+            }
+            TimeSpan milis = new TimeSpan(0,0,0,0,1000);
+            for(int i = 0; i < lvl; i++) {
+                timer2 = milis.Subtract(timer3);
+            }
         }
     }
 }

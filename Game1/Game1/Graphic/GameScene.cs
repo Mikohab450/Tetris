@@ -15,12 +15,14 @@ namespace Game1
         Texture2D background;
         SpriteFont font;
         private Texture2D texture1px;
-        private bool IsStart = true;
-        static public bool IsRestart = true;
+        private static Texture2D rect;
+
         Rectangle recPlayButton;
         Rectangle recExitButton;
         Rectangle recLogo;
-        private static Texture2D rect;
+
+        private bool IsStart = true;
+        static public bool IsRestart = true;
 
         private float cols = 7;
         private float rows = 17;
@@ -32,11 +34,9 @@ namespace Game1
         public int shiftY = 9;
         public int shiftX = 32;
         private int scorePos = 515;
-        private Board board;// = new Board();
+        private Board board;
         private GameLogic gameLogic = new GameLogic();
-        private Score score = new Score();
 
-    
         public GameScene(Game game, Board board) : base(game)
         {
             this.board = board;
@@ -89,11 +89,8 @@ namespace Game1
                               39, 39), board[j, i].Color);
                 }
             }
-
             DrawNext(spriteBatch,board);
-
             spriteBatch.End();
-          //  gameLogic.Draw(spriteBatch, gameTime);
         }
 
         public void Update(GameTime gameTime)
@@ -103,16 +100,16 @@ namespace Game1
                 texture1px = new Texture2D(GraphicsDevice, 1, 1);
                 texture1px.SetData(new Color[] {Color.White});
             }
-
             if (IsRestart)
             {
                 board.GetScore().ClearScore();
                 IsRestart = false;
             }
-
             gameLogic.Update(gameTime, board);
         }
-
+        /// <summary>
+        /// Draws rectangle in given position and of given color
+        /// </summary>
         private void DrawRectangle(SpriteBatch spriteBatch, Rectangle coords, Color color)
         {
             if (rect == null)
@@ -120,10 +117,11 @@ namespace Game1
                 rect = new Texture2D(GraphicsDevice, 1, 1);
                 rect.SetData(new[] {Color.White});
             }
-
             spriteBatch.Draw(rect, coords, color);
         }
-
+        /// <summary>
+        /// Draws the figure that will appear next
+        /// </summary>
         private void DrawNext(SpriteBatch spriteBatch, Board board)
         {
             SingleBlock [,]tab = new SingleBlock[5,8];

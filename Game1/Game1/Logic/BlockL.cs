@@ -35,10 +35,6 @@ namespace Game1
     }
     class BlockLRotated90ToRight : BlockL
     {
-        //public BlockLRotated90ToRight(Board board) : base(board)
-        //{
-
-        //}
         public BlockLRotated90ToRight(Figure f) : base(f) { }
         public override SingleBlock[] SetBlocks(Board board_)
         {
@@ -63,9 +59,6 @@ namespace Game1
     class BlockLRotated180ToRight : BlockL
     {
         public BlockLRotated180ToRight(Figure f) : base(f) { }
-        //public BlockLRotated180ToRight(Board board) : base(board)
-        //{
-        //}
         public override SingleBlock[] SetBlocks(Board board_)
         {
             SingleBlock[] blocks = new SingleBlock[4];
@@ -87,9 +80,7 @@ namespace Game1
     class BlockLRotated270ToRight : BlockL
     {
         public BlockLRotated270ToRight(Figure f) : base(f) { }
-        //public BlockLRotated270ToRight(Board board) : base(board)
-        //{
-        //}
+
         public override SingleBlock[] SetBlocks(Board board_)
         {
             SingleBlock[] blocks = new SingleBlock[4];

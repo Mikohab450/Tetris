@@ -35,9 +35,6 @@ namespace Game1
     class BlockZRotated90ToRight : BlockZ
     {
         public BlockZRotated90ToRight(Figure f) : base(f) { }
-        //public BlockZRotated90ToRight(Board board) : base(board)
-        //{
-        //}
         public override SingleBlock[] SetBlocks(Board board_)
         {
             SingleBlock[] blocks = new SingleBlock[4];

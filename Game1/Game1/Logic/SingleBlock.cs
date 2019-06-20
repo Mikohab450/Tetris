@@ -20,7 +20,6 @@ namespace Game1
         /// <param name="p">Coordinates of the block</param>
         public SingleBlock(Board board_,Point p)
         {
-
                 position = p;
            // else throw new IndexOutOfRangeException("Given coordinates are incorrect!");
             board = board_;
