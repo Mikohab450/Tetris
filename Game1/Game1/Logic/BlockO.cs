@@ -9,7 +9,7 @@ namespace Game1
 {
     class BlockO : Figure
     {
-        public BlockO(Board board_) : base(board_)
+        public BlockO(Board board_, Color color) : base(board_, color)
         { }
         public override SingleBlock[] SetBlocks(Board board_)
         {

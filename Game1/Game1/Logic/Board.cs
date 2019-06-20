@@ -165,7 +165,7 @@ namespace Game1
         public void CheckGameOver()
         {
             for (int i = 0; i < 4; i++)
-                if (current_figure[i].position.X < 0)
+                if (current_figure[i].position.X <=0 )
                     EndTheGame();
             if (!gameOver)
             {

@@ -9,7 +9,7 @@ namespace Game1
 {
     class BlockI : Figure
     {
-        public BlockI(Board board_) : base(board_) { }
+        public BlockI(Board board_, Color color) : base(board_, color) { }
         public BlockI(Figure f) : base(f) { }
         public override SingleBlock[] SetBlocks(Board board)
         {
@@ -34,9 +34,9 @@ namespace Game1
     class BlockIRotated : BlockI
     {
 
-        public BlockIRotated(Board board_) : base(board_)
-        {
-        }
+        //public BlockIRotated(Board board_) : base(board_)
+        //{
+        //}
         public BlockIRotated(Figure f) : base(f) { }
         public override SingleBlock[] SetBlocks(Board board_)
         {
