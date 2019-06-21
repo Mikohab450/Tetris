@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Game1.Board">
+    <Position X="3.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAACBSEAASAaCAAAAAQAAAwIiKIBAgEAAAAA=</HashCode>
+      <FileName>Logic\Board.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game1.Figure">
+    <Position X="6.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAUAAAECAAAIAAAAAAAAACI4BgAgFAABAA=</HashCode>
+      <FileName>Logic\Figure.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game1.SingleBlock">
+    <Position X="9.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAIAAAAAAAAAAI4AAAgAAAAAA=</HashCode>
+      <FileName>Logic\SingleBlock.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

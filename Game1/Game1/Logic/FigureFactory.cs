@@ -22,8 +22,8 @@ namespace Game1
 
         public FigureFactory(Board board)
         {
-            set = new int[14];
-            for (int i = 0; i < 14; i++)
+            set = new int[7];
+            for (int i = 0; i < 7; i++)
                 set[i] = i;
             Figury = new LinkedList<Figure>();
             rnd = new Random();
